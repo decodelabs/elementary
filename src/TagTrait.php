@@ -240,8 +240,14 @@ trait TagTrait
             $output .= "\n";
         }
 
-        return new Buffer($output);
+        return $this->newBuffer($output);
     }
+
+
+    /**
+     * Create new local buffer
+     */
+    abstract protected function newBuffer(?string $content): Buffer;
 
 
 

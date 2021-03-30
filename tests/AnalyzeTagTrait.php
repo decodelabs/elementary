@@ -11,6 +11,7 @@ namespace DecodeLabs\Elementary\Tests;
 
 use DecodeLabs\Elementary\Attribute\ClassList\Container as ClassListContainer;
 use DecodeLabs\Elementary\Attribute\ClassList\ContainerTrait as ClassListContainerTrait;
+use DecodeLabs\Elementary\Buffer;
 use DecodeLabs\Elementary\Style\Container as StyleContainer;
 use DecodeLabs\Elementary\Style\ContainerTrait as StyleContainerTrait;
 use DecodeLabs\Elementary\Tag;
@@ -27,4 +28,13 @@ class AnalyzeTagTrait implements
 
     const INLINE_TAGS = [];
     const BOOLEAN_ATTRIBUTES = [];
-};
+
+
+    /**
+     * Create new buffer
+     */
+    protected function newBuffer(?string $content): Buffer
+    {
+        return new AnalyzeBufferTrait($content);
+    }
+}
