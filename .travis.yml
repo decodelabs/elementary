@@ -1,4 +1,4 @@
-# TravisCI configuration for decodelabs/tagged
+# TravisCI configuration for decodelabs/elementary
 
 language: 'php'
 os:
