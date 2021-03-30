@@ -1,0 +1,42 @@
+{
+    "name": "decodelabs/elementary",
+    "description": "Shared base markup handling library",
+    "type": "library",
+    "keywords": ["markup", "html", "xml"],
+    "license": "MIT",
+    "authors": [{
+        "name": "Tom Wright",
+        "email": "tom@inflatablecookie.com"
+    }],
+    "require": {
+        "php": "^7.2|^8.0",
+        "symfony/polyfill-mbstring": "^1.7",
+
+        "decodelabs/exceptional": "^0.3",
+        "decodelabs/glitch-support": "^0.3",
+        "decodelabs/collections": "^0.6",
+        "decodelabs/gadgets": "^0.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8",
+        "phpstan/phpstan": "^0.12.45",
+        "phpstan/extension-installer": "^1.0",
+        "decodelabs/phpstan-decodelabs": "^0.4",
+        "symplify/easy-coding-standard": "^8.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "DecodeLabs\\Elementary\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "0.1.x-dev"
+        }
+    },
+    "scripts": {
+        "analyze": "phpstan analyze --no-progress",
+        "psr12": "ecs check --no-progress-bar",
+        "psr12-fix": "ecs check --no-progress-bar --fix"
+    }
+}
