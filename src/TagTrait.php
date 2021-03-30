@@ -26,17 +26,17 @@ trait TagTrait
     // public const INLINE_TAGS = [];
 
     /**
-     * @var string $name
+     * @var string
      */
     protected $name;
 
     /**
-     * @var bool $closable
+     * @var bool
      */
     protected $closable = true;
 
     /**
-     * @var bool $renderEmpty
+     * @var bool
      */
     protected $renderEmpty = true;
 

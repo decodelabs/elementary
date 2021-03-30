@@ -12,7 +12,7 @@ namespace DecodeLabs\Elementary;
 trait BufferTrait
 {
     /**
-     * @var string $content
+     * @var string
      */
     protected $content;
 

@@ -17,6 +17,8 @@ use Traversable;
  */
 interface Element extends Tag, Sequence, Traversable
 {
+    public const MUTABLE = true;
+
     /**
      * @param mixed $body
      */

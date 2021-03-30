@@ -42,8 +42,9 @@ trait ElementTrait
     public function render(bool $pretty = false): ?Buffer
     {
         if (null === ($output = $this->renderWith(
-            $this->renderContent($pretty), $pretty)
-        )) {
+            $this->renderContent($pretty),
+            $pretty
+        ))) {
             return null;
         }
 

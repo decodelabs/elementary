@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace DecodeLabs\Elementary\Markup;
 
-use DecodeLabs\Elementary\Markup;
 use DecodeLabs\Elementary\Element;
+use DecodeLabs\Elementary\Markup;
 
 trait ChildRendererTrait
 {
