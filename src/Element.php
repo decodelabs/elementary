@@ -10,17 +10,14 @@ declare(strict_types=1);
 namespace DecodeLabs\Elementary;
 
 use DecodeLabs\Collections\Sequence;
-use Traversable;
 
-/**
- * @extends Traversable<int, mixed>
- */
-interface Element extends Tag, Sequence, Traversable
+interface Element extends Tag, Sequence
 {
     public const MUTABLE = true;
 
     /**
      * @param mixed $body
+     * @return Element<int, mixed>
      */
     public function setBody($body): Element;
 
