@@ -16,6 +16,8 @@ trait ContainerTrait
 {
     /**
      * Replace class list
+     *
+     * @param mixed ...$classes
      */
     public function setClasses(...$classes): Container
     {
@@ -26,6 +28,8 @@ trait ContainerTrait
 
     /**
      * Add class set to list
+     *
+     * @param mixed ...$classes
      */
     public function addClasses(...$classes): Container
     {

@@ -12,6 +12,9 @@ namespace DecodeLabs\Elementary;
 use ArrayAccess;
 use DecodeLabs\Collections\AttributeContainer;
 
+/**
+ * @extends \ArrayAccess<string, mixed>
+ */
 interface Tag extends Markup, AttributeContainer, ArrayAccess
 {
     public function setName(string $name): Tag;
@@ -30,6 +33,9 @@ interface Tag extends Markup, AttributeContainer, ArrayAccess
     public function setClosable(bool $closable): Tag;
     public function isClosable(): bool;
 
+    /**
+     * @param mixed $content
+     */
     public function renderWith($content = null, bool $pretty = false): ?Markup;
 
     public function setRenderEmpty(bool $render): Tag;

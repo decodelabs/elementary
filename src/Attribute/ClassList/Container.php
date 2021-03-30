@@ -14,8 +14,16 @@ use DecodeLabs\Elementary\Attribute\ClassList;
 
 interface Container extends AttributeContainer
 {
+    /**
+     * @param mixed ...$classes
+     */
     public function setClasses(...$classes): Container;
+
+    /**
+     * @param mixed ...$classes
+     */
     public function addClasses(...$classes): Container;
+
     public function getClasses(): ClassList;
     public function setClass(?string ...$classes): Container;
     public function addClass(?string ...$classes): Container;

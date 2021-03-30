@@ -16,6 +16,9 @@ use DecodeLabs\Exceptional;
 
 use IteratorAggregate;
 
+/**
+ * @implements IteratorAggregate<string, string>
+ */
 class Collection implements IteratorAggregate, HashMap
 {
     use HashMapTrait;
@@ -24,6 +27,8 @@ class Collection implements IteratorAggregate, HashMap
 
     /**
      * Init with styles
+     *
+     * @param mixed ...$input
      */
     public function __construct(...$input)
     {
@@ -32,6 +37,8 @@ class Collection implements IteratorAggregate, HashMap
 
     /**
      * Import style data
+     *
+     * @param mixed ...$input
      */
     public function import(...$input): Collection
     {
@@ -56,6 +63,8 @@ class Collection implements IteratorAggregate, HashMap
 
     /**
      * Parse string styles
+     *
+     * @return array<string, string>
      */
     protected function parse(string $style): array
     {
@@ -81,6 +90,8 @@ class Collection implements IteratorAggregate, HashMap
 
     /**
      * Export list of styles that have been set
+     *
+     * @return array<string, string>
      */
     public function export(string ...$keys): array
     {

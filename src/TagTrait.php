@@ -7,13 +7,16 @@
 
 declare(strict_types=1);
 
-namespace DecodeLabs\Elementary\Builder;
+namespace DecodeLabs\Elementary;
 
 use DecodeLabs\Collections\AttributeContainerTrait;
 use DecodeLabs\Elementary\Attribute\ClassList\Container as ClassListContainer;
 use DecodeLabs\Elementary\Markup\ChildRendererTrait;
 use DecodeLabs\Exceptional;
 
+/**
+ * @implements \ArrayAccess<string, mixed>
+ */
 trait TagTrait
 {
     use AttributeContainerTrait;
@@ -22,13 +25,27 @@ trait TagTrait
     // public const BOOLEAN_ATTRIBUTES = [];
     // public const INLINE_TAGS = [];
 
+    /**
+     * @var string $name
+     */
     protected $name;
+
+    /**
+     * @var bool $closable
+     */
     protected $closable = true;
+
+    /**
+     * @var bool $renderEmpty
+     */
     protected $renderEmpty = true;
 
 
     /**
      * Init with name and attributes
+     *
+     * @param string $name
+     * @param array<string, mixed>|null $attributes
      */
     public function __construct(string $name, array $attributes = null)
     {
@@ -135,7 +152,7 @@ trait TagTrait
     /**
      * Is tag name a closable <tag /> type?
      */
-    public function isClosableTagName(string $name): bool
+    public static function isClosableTagName(string $name): bool
     {
         return false;
     }
@@ -188,6 +205,8 @@ trait TagTrait
 
     /**
      * Render tag with inner content
+     *
+     * @param mixed $content
      */
     public function renderWith($content = null, bool $pretty = false): ?Markup
     {
@@ -330,8 +349,57 @@ trait TagTrait
     }
 
 
+
+
+    /**
+     * Shortcut to set attribute
+     *
+     * @param mixed $key
+     * @param mixed $value
+     */
+    public function offsetSet($key, $value): void
+    {
+        $this->setAttribute((string)$key, $value);
+    }
+
+    /**
+     * Shortcut to get attribute
+     *
+     * @param mixed $key
+     * @return mixed
+     */
+    public function offsetGet($key)
+    {
+        return $this->getAttribute((string)$key);
+    }
+
+    /**
+     * Shortcut to test for attribute
+     *
+     * @param mixed $key
+     */
+    public function offsetExists($key): bool
+    {
+        return $this->hasAttribute((string)$key);
+    }
+
+    /**
+     * Shortcut to remove attribute
+     *
+     * @param mixed $key
+     */
+    public function offsetUnset($key): void
+    {
+        $this->removeAttribute((string)$key);
+    }
+
+
+
+
     /**
      * Export for dump inspection
+     *
+     * @return iterable<string, mixed>
      */
     public function glitchDump(): iterable
     {

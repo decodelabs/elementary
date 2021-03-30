@@ -15,6 +15,9 @@ use DecodeLabs\Glitch\Dumpable;
 
 class ClassList implements Countable, Dumpable
 {
+    /**
+     * @var array<string, bool>
+     */
     protected $classes = [];
 
     /**
@@ -110,6 +113,8 @@ class ClassList implements Countable, Dumpable
 
     /**
      * Export to array
+     *
+     * @return array<string>
      */
     public function toArray(): array
     {
@@ -126,6 +131,8 @@ class ClassList implements Countable, Dumpable
 
     /**
      * Export for dump inspection
+     *
+     * @return iterable<string, mixed>
      */
     public function glitchDump(): iterable
     {

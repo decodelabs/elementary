@@ -11,8 +11,16 @@ namespace DecodeLabs\Elementary\Style;
 
 interface Container
 {
+    /**
+     * @param mixed ...$styles
+     */
     public function setStyles(...$styles): Container;
+
+    /**
+     * @param mixed ...$styles
+     */
     public function addStyles(...$styles): Container;
+
     public function getStyles(): Collection;
     public function setStyle(string $key, ?string $value): Container;
     public function getStyle(string $key): ?string;

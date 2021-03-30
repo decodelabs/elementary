@@ -10,11 +10,14 @@ declare(strict_types=1);
 namespace DecodeLabs\Elementary\Markup;
 
 use DecodeLabs\Elementary\Markup;
+use DecodeLabs\Elementary\Element;
 
 trait ChildRendererTrait
 {
     /**
      * Convert child element to string
+     *
+     * @param mixed $value
      */
     protected function renderChild($value, bool $pretty = false): string
     {

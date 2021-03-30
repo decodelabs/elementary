@@ -13,6 +13,8 @@ trait ContainerTrait
 {
     /**
      * Replace style list
+     *
+     * @param mixed ...$styles
      */
     public function setStyles(...$styles): Container
     {
@@ -24,6 +26,8 @@ trait ContainerTrait
 
     /**
      * Merge style list
+     *
+     * @param mixed ...$styles
      */
     public function addStyles(...$styles): Container
     {

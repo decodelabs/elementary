@@ -18,14 +18,22 @@ use DecodeLabs\Glitch\Dumpable;
 use IteratorAggregate;
 use Throwable;
 
+/**
+ * @implements IteratorAggregate<string, Collection>
+ */
 class Sheet implements IteratorAggregate, Dumpable
 {
     public const MUTABLE = true;
 
+    /**
+     * @var array<string, Collection>
+     */
     protected $blocks = [];
 
     /**
      * Init with styles
+     *
+     * @param mixed ...$input
      */
     public function __construct(...$input)
     {
@@ -34,6 +42,8 @@ class Sheet implements IteratorAggregate, Dumpable
 
     /**
      * Import style data
+     *
+     * @param mixed ...$input
      */
     public function import(...$input): Sheet
     {
@@ -60,6 +70,8 @@ class Sheet implements IteratorAggregate, Dumpable
 
     /**
      * Parse string styles
+     *
+     * @return array<string, Collection>
      */
     protected function parse(string $style): array
     {
@@ -84,6 +96,8 @@ class Sheet implements IteratorAggregate, Dumpable
 
     /**
      * Direct set a value
+     *
+     * @param mixed $value
      */
     public function set(string $key, $value): Sheet
     {
@@ -172,6 +186,8 @@ class Sheet implements IteratorAggregate, Dumpable
 
     /**
      * Export for dump inspection
+     *
+     * @return iterable<string, mixed>
      */
     public function glitchDump(): iterable
     {

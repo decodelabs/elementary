@@ -13,6 +13,9 @@ use DecodeLabs\Glitch\Dumpable;
 
 class Buffer implements Markup, Dumpable
 {
+    /**
+     * @var string $content
+     */
     protected $content;
 
     /**
@@ -69,6 +72,8 @@ class Buffer implements Markup, Dumpable
 
     /**
      * Export for dump inspection
+     *
+     * @return iterable<string, mixed>
      */
     public function glitchDump(): iterable
     {
