@@ -25,5 +25,12 @@ Other Decode Labs packages using this library:
 - [**Tagged** - HTML generator](https://github.com/decodelabs/tagged)
 
 
+### PHP version
+
+_Please note, the final v1 releases of all Decode Labs libraries will target **PHP8** or above._
+
+Current support for earlier versions of PHP will be phased out in the coming months.
+
+
 ## Licensing
 Elementary is licensed under the MIT License. See [LICENSE](./LICENSE) for the full license text.

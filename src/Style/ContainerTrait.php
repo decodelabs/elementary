@@ -15,6 +15,7 @@ trait ContainerTrait
      * Replace style list
      *
      * @param mixed ...$styles
+     * @return $this
      */
     public function setStyles(...$styles): Container
     {
@@ -28,6 +29,7 @@ trait ContainerTrait
      * Merge style list
      *
      * @param mixed ...$styles
+     * @return $this
      */
     public function addStyles(...$styles): Container
     {
@@ -49,6 +51,8 @@ trait ContainerTrait
 
     /**
      * Set a single style value
+     *
+     * @return $this
      */
     public function setStyle(string $key, ?string $value): Container
     {
@@ -73,6 +77,8 @@ trait ContainerTrait
 
     /**
      * Remove set of styles
+     *
+     * @return $this
      */
     public function removeStyle(string ...$keys): Container
     {
@@ -98,6 +104,8 @@ trait ContainerTrait
 
     /**
      * Reset all styles
+     *
+     * @return $this
      */
     public function clearStyles(): Container
     {
