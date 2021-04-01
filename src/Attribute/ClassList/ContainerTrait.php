@@ -18,6 +18,7 @@ trait ContainerTrait
      * Replace class list
      *
      * @param mixed ...$classes
+     * @return $this
      */
     public function setClasses(...$classes): Container
     {
@@ -30,6 +31,7 @@ trait ContainerTrait
      * Add class set to list
      *
      * @param mixed ...$classes
+     * @return $this
      */
     public function addClasses(...$classes): Container
     {
@@ -52,6 +54,8 @@ trait ContainerTrait
 
     /**
      * Add class set to list
+     *
+     * @return $this
      */
     public function setClass(?string ...$classes): Container
     {
@@ -61,6 +65,8 @@ trait ContainerTrait
 
     /**
      * Get class list from attribute set
+     *
+     * @return $this
      */
     public function addClass(?string ...$classes): Container
     {
@@ -70,6 +76,8 @@ trait ContainerTrait
 
     /**
      * Remove set of classes from list
+     *
+     * @return $this
      */
     public function removeClass(?string ...$classes): Container
     {
@@ -95,6 +103,8 @@ trait ContainerTrait
 
     /**
      * Reset class list
+     *
+     * @return $this
      */
     public function clearClasses(): Container
     {
