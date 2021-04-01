@@ -1,3 +1,8 @@
+## v0.1.2 (2021-04-01)
+* Improved container interface return hints
+* Added version notice to readme
+* Removed mb-string polyfill dependency
+
 ## v0.1.1 (2021-03-30)
 * Fixed Element interface inheritance on PHP 7.2/3
 
