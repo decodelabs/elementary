@@ -1,3 +1,6 @@
+## v0.1.3 (2021-04-02)
+* Added generator return value extraction to renderer
+
 ## v0.1.2 (2021-04-01)
 * Improved container interface return hints
 * Added version notice to readme
