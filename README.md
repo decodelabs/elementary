@@ -23,6 +23,7 @@ This library should be used as the basis for _other_ markup / tag handling libra
 Other Decode Labs packages using this library:
 
 - [**Tagged** - HTML generator](https://github.com/decodelabs/tagged)
+- [**Exemplar** - XML manipulator](https://github.com/decodelabs/exemplar)
 
 
 ### PHP version
