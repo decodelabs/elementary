@@ -12,6 +12,8 @@ namespace DecodeLabs\Elementary\Markup;
 use DecodeLabs\Elementary\Element;
 use DecodeLabs\Elementary\Markup;
 
+use Generator;
+
 trait ChildRendererTrait
 {
     /**
@@ -40,6 +42,13 @@ trait ChildRendererTrait
         ) {
             foreach ($value as $part) {
                 $output .= $this->renderChild($part, $pretty);
+            }
+
+            if (
+                $value instanceof Generator &&
+                null !== ($part = $value->getReturn())
+            ) {
+                $output .= $this->renderChild($part);
             }
 
             return $output;
