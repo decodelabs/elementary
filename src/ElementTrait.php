@@ -13,6 +13,9 @@ use DecodeLabs\Collections\Native\SequenceTrait;
 
 trait ElementTrait
 {
+    /**
+     * @use SequenceTrait<mixed>
+     */
     use SequenceTrait;
 
     // public const MUTABLE = true;
