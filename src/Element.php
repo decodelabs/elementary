@@ -11,6 +11,9 @@ namespace DecodeLabs\Elementary;
 
 use DecodeLabs\Collections\Sequence;
 
+/**
+ * @extends Sequence<mixed>
+ */
 interface Element extends Tag, Sequence
 {
     public const MUTABLE = true;

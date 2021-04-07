@@ -18,9 +18,13 @@ use IteratorAggregate;
 
 /**
  * @implements IteratorAggregate<string, string>
+ * @implements HashMap<string>
  */
 class Collection implements IteratorAggregate, HashMap
 {
+    /**
+     * @use HashMapTrait<string>
+     */
     use HashMapTrait;
 
     public const MUTABLE = true;
