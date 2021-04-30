@@ -20,7 +20,7 @@ interface Element extends Tag, Sequence
 
     /**
      * @param mixed $body
-     * @return Element<int, mixed>
+     * @return $this
      */
     public function setBody($body): Element;
 

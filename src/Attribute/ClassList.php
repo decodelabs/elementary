@@ -30,6 +30,8 @@ class ClassList implements Countable, Dumpable
 
     /**
      * Add class list
+     *
+     * @return $this
      */
     public function add(?string ...$classes): ClassList
     {
@@ -80,6 +82,8 @@ class ClassList implements Countable, Dumpable
 
     /**
      * Remove all classes in list
+     *
+     * @return $this
      */
     public function remove(?string ...$classes): ClassList
     {
@@ -96,6 +100,8 @@ class ClassList implements Countable, Dumpable
 
     /**
      * Clear class list
+     *
+     * @return $this
      */
     public function clear(): ClassList
     {
