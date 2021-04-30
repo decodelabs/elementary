@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace DecodeLabs\Elementary\Style;
 
+use Stringable;
+
 interface Container
 {
     /**
@@ -26,9 +28,10 @@ interface Container
     public function getStyles(): Collection;
 
     /**
+     * @param string|Stringable|int|float|null $value
      * @return $this
      */
-    public function setStyle(string $key, ?string $value): Container;
+    public function setStyle(string $key, $value): Container;
 
     public function getStyle(string $key): ?string;
 
