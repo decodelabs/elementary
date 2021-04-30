@@ -17,10 +17,17 @@ use DecodeLabs\Collections\AttributeContainer;
  */
 interface Tag extends Markup, AttributeContainer, ArrayAccess
 {
+    /**
+     * @return $this
+     */
     public function setName(string $name): Tag;
+
     public function getName(): string;
     public static function isClosableTagName(string $name): bool;
 
+    /**
+     * @return $this
+     */
     public function setId(?string $id): Tag;
     public function getId(): ?string;
 
@@ -30,6 +37,9 @@ interface Tag extends Markup, AttributeContainer, ArrayAccess
     public function open(): string;
     public function close(): string;
 
+    /**
+     * @return $this
+     */
     public function setClosable(bool $closable): Tag;
     public function isClosable(): bool;
 
@@ -38,6 +48,9 @@ interface Tag extends Markup, AttributeContainer, ArrayAccess
      */
     public function renderWith($content = null, bool $pretty = false): ?Markup;
 
+    /**
+     * @return $this
+     */
     public function setRenderEmpty(bool $render): Tag;
     public function willRenderEmpty(): bool;
 }

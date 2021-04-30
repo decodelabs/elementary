@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace DecodeLabs\Elementary\Style;
 
+use Stringable;
+
 trait ContainerTrait
 {
     /**
@@ -52,16 +54,17 @@ trait ContainerTrait
     /**
      * Set a single style value
      *
+     * @param string|Stringable|int|float|null $value
      * @return $this
      */
-    public function setStyle(string $key, ?string $value): Container
+    public function setStyle(string $key, $value): Container
     {
         $styles = $this->getStyles();
 
         if ($value === null) {
             $styles->remove($key);
         } else {
-            $styles->set($key, $value);
+            $styles->set($key, (string)$value);
         }
 
         return $this;

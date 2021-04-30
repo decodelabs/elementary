@@ -43,6 +43,7 @@ class Collection implements IteratorAggregate, HashMap
      * Import style data
      *
      * @param mixed ...$input
+     * @return $this
      */
     public function import(...$input): Collection
     {
