@@ -1,3 +1,6 @@
+* Allow Stringable, int and float as value in setStyle()
+* Updated return type defs
+
 ## v0.1.4 (2021-04-07)
 * Updated Collections
 
