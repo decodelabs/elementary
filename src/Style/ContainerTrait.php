@@ -21,9 +21,9 @@ trait ContainerTrait
      */
     public function setStyles(...$styles): Container
     {
-        $styles = $this->getStyles();
-        $styles->clear();
-        $styles->import(...$styles);
+        $collection = $this->getStyles();
+        $collection->clear();
+        $collection->import(...$styles);
         return $this;
     }
 

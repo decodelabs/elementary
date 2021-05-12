@@ -1,3 +1,6 @@
+## v0.1.6 (2021-05-12)
+* Fixed setStyles() handler in ContainerTrait
+
 ## v0.1.5 (2021-04-30)
 * Allow Stringable, int and float as value in setStyle()
 * Updated return type defs
