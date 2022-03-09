@@ -1,3 +1,7 @@
+## v0.1.7 (2022-03-09)
+* Transitioned from Travis to GHA
+* Updated PHPStan and ECS dependencies
+
 ## v0.1.6 (2021-05-12)
 * Fixed setStyles() handler in ContainerTrait
 
