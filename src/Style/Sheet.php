@@ -17,6 +17,7 @@ use DecodeLabs\Glitch\Dumpable;
 
 use IteratorAggregate;
 use Throwable;
+use Traversable;
 
 /**
  * @implements IteratorAggregate<string, Collection>
@@ -179,7 +180,7 @@ class Sheet implements IteratorAggregate, Dumpable
     /**
      * Get iterator
      */
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->blocks);
     }

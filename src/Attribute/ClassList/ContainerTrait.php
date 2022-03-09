@@ -22,6 +22,7 @@ trait ContainerTrait
      */
     public function setClasses(...$classes): Container
     {
+        /** @var array<string> $classes */
         $classes = ArrayUtils::collapse($classes, false, true, true);
         $this->getClasses()->clear()->add(...$classes);
         return $this;
@@ -35,6 +36,7 @@ trait ContainerTrait
      */
     public function addClasses(...$classes): Container
     {
+        /** @var array<string> $classes */
         $classes = ArrayUtils::collapse($classes, false, true, true);
         $this->getClasses()->add(...$classes);
         return $this;
