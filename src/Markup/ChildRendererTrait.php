@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace DecodeLabs\Elementary\Markup;
 
+use DecodeLabs\Coercion;
 use DecodeLabs\Elementary\Element;
 use DecodeLabs\Elementary\Markup;
 
@@ -57,7 +58,7 @@ trait ChildRendererTrait
         if ($value instanceof Element) {
             $output = (string)$value->render($pretty);
         } else {
-            $output = (string)$value;
+            $output = Coercion::toStringOrNull($value) ?? '';
         }
 
         if (!$value instanceof Markup) {

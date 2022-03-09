@@ -1,11 +1,11 @@
 # Elementary
 
-[![PHP from Packagist](https://img.shields.io/packagist/php-v/decodelabs/elementary?style=flat-square)](https://packagist.org/packages/decodelabs/elementary)
-[![Latest Version](https://img.shields.io/packagist/v/decodelabs/elementary.svg?style=flat-square)](https://packagist.org/packages/decodelabs/elementary)
-[![Total Downloads](https://img.shields.io/packagist/dt/decodelabs/elementary.svg?style=flat-square)](https://packagist.org/packages/decodelabs/elementary)
-[![Build Status](https://img.shields.io/travis/com/decodelabs/elementary/main.svg?style=flat-square)](https://app.travis-ci.com/github/decodelabs/elementary)
-[![PHPStan](https://img.shields.io/badge/PHPStan-enabled-44CC11.svg?longCache=true&style=flat-square)](https://github.com/phpstan/phpstan)
-[![License](https://img.shields.io/packagist/l/decodelabs/elementary?style=flat-square)](https://packagist.org/packages/decodelabs/elementary)
+[![PHP from Packagist](https://img.shields.io/packagist/php-v/decodelabs/elementary?style=flat)](https://packagist.org/packages/decodelabs/elementary)
+[![Latest Version](https://img.shields.io/packagist/v/decodelabs/elementary.svg?style=flat)](https://packagist.org/packages/decodelabs/elementary)
+[![Total Downloads](https://img.shields.io/packagist/dt/decodelabs/elementary.svg?style=flat)](https://packagist.org/packages/decodelabs/elementary)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/decodelabs/elementary/PHP%20Composer)](https://github.com/decodelabs/elementary/actions/workflows/php.yml)
+[![PHPStan](https://img.shields.io/badge/PHPStan-enabled-44CC11.svg?longCache=true&style=flat)](https://github.com/phpstan/phpstan)
+[![License](https://img.shields.io/packagist/l/decodelabs/elementary?style=flat)](https://packagist.org/packages/decodelabs/elementary)
 
 Shared base markup handling library for PHP.
 

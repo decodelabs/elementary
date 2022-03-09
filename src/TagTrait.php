@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace DecodeLabs\Elementary;
 
+use DecodeLabs\Coercion;
 use DecodeLabs\Collections\AttributeContainerTrait;
 use DecodeLabs\Elementary\Attribute\ClassList\Container as ClassListContainer;
 use DecodeLabs\Elementary\Markup\ChildRendererTrait;
@@ -181,7 +182,7 @@ trait TagTrait
      */
     public function getId(): ?string
     {
-        return $this->getAttribute('id');
+        return Coercion::toStringOrNull($this->getAttribute('id'));
     }
 
 
@@ -365,7 +366,7 @@ trait TagTrait
      */
     public function offsetSet($key, $value): void
     {
-        $this->setAttribute((string)$key, $value);
+        $this->setAttribute(Coercion::toString($key), $value);
     }
 
     /**
@@ -376,7 +377,7 @@ trait TagTrait
      */
     public function offsetGet($key)
     {
-        return $this->getAttribute((string)$key);
+        return $this->getAttribute(Coercion::toString($key));
     }
 
     /**
@@ -386,7 +387,7 @@ trait TagTrait
      */
     public function offsetExists($key): bool
     {
-        return $this->hasAttribute((string)$key);
+        return $this->hasAttribute(Coercion::toString($key));
     }
 
     /**
@@ -396,7 +397,7 @@ trait TagTrait
      */
     public function offsetUnset($key): void
     {
-        $this->removeAttribute((string)$key);
+        $this->removeAttribute(Coercion::toString($key));
     }
 
 
