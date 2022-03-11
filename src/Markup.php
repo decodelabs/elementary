@@ -9,7 +9,8 @@ declare(strict_types=1);
 
 namespace DecodeLabs\Elementary;
 
-interface Markup
+use Stringable;
+
+interface Markup extends Stringable
 {
-    public function __toString(): string;
 }
