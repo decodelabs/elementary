@@ -26,20 +26,9 @@ trait TagTrait
     // public const BOOLEAN_ATTRIBUTES = [];
     // public const INLINE_TAGS = [];
 
-    /**
-     * @var string
-     */
-    protected $name;
-
-    /**
-     * @var bool
-     */
-    protected $closable = true;
-
-    /**
-     * @var bool
-     */
-    protected $renderEmpty = true;
+    protected string $name;
+    protected bool $closable = true;
+    protected bool $renderEmpty = true;
 
 
     /**
@@ -48,8 +37,10 @@ trait TagTrait
      * @param string $name
      * @param array<string, mixed>|null $attributes
      */
-    public function __construct(string $name, array $attributes = null)
-    {
+    public function __construct(
+        string $name,
+        array $attributes = null
+    ) {
         $this->setName($name);
 
         if ($attributes !== null) {
@@ -69,7 +60,7 @@ trait TagTrait
     /**
      * Parse css style selector into tag name, classes, etc
      */
-    public function setName(string $name): Tag
+    public function setName(string $name): static
     {
         $origName = $name;
 
@@ -162,7 +153,7 @@ trait TagTrait
     /**
      * Direct set id attribute
      */
-    public function setId(?string $id): Tag
+    public function setId(?string $id): static
     {
         if ($id === null) {
             $this->removeAttribute('id');
@@ -206,11 +197,11 @@ trait TagTrait
 
     /**
      * Render tag with inner content
-     *
-     * @param mixed $content
      */
-    public function renderWith($content = null, bool $pretty = false): ?Markup
-    {
+    public function renderWith(
+        mixed $content = null,
+        bool $pretty = false
+    ): ?Markup {
         if ($this->closable) {
             if (
                 !$this->renderEmpty &&
@@ -255,7 +246,7 @@ trait TagTrait
     /**
      * Set whether to render tag if no content
      */
-    public function setRenderEmpty(bool $render): Tag
+    public function setRenderEmpty(bool $render): static
     {
         $this->renderEmpty = $render;
         return $this;
@@ -298,7 +289,7 @@ trait TagTrait
             } elseif ($value instanceof Markup) {
                 $attributes[] = $key . '="' . (string)$value . '"';
             } else {
-                $attributes[] = $key . '="' . $this->esc((string)$value) . '"';
+                $attributes[] = $key . '="' . $this->esc(Coercion::toString($value)) . '"';
             }
         }
 
@@ -331,7 +322,7 @@ trait TagTrait
     /**
      * Manually override whether tag has closing tag, or is single inline tag
      */
-    public function setClosable(bool $closable): Tag
+    public function setClosable(bool $closable): static
     {
         $this->closable = $closable;
         return $this;
@@ -360,42 +351,34 @@ trait TagTrait
 
     /**
      * Shortcut to set attribute
-     *
-     * @param mixed $key
-     * @param mixed $value
      */
-    public function offsetSet($key, $value): void
-    {
+    public function offsetSet(
+        mixed $key,
+        mixed $value
+    ): void {
         $this->setAttribute(Coercion::toString($key), $value);
     }
 
     /**
      * Shortcut to get attribute
-     *
-     * @param mixed $key
-     * @return mixed
      */
-    public function offsetGet($key)
+    public function offsetGet(mixed $key): mixed
     {
         return $this->getAttribute(Coercion::toString($key));
     }
 
     /**
      * Shortcut to test for attribute
-     *
-     * @param mixed $key
      */
-    public function offsetExists($key): bool
+    public function offsetExists(mixed $key): bool
     {
         return $this->hasAttribute(Coercion::toString($key));
     }
 
     /**
      * Shortcut to remove attribute
-     *
-     * @param mixed $key
      */
-    public function offsetUnset($key): void
+    public function offsetUnset(mixed $key): void
     {
         $this->removeAttribute(Coercion::toString($key));
     }

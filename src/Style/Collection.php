@@ -20,7 +20,9 @@ use IteratorAggregate;
  * @implements IteratorAggregate<string, string>
  * @implements HashMap<string>
  */
-class Collection implements IteratorAggregate, HashMap
+class Collection implements
+    IteratorAggregate,
+    HashMap
 {
     /**
      * @use HashMapTrait<string>
@@ -31,10 +33,8 @@ class Collection implements IteratorAggregate, HashMap
 
     /**
      * Init with styles
-     *
-     * @param mixed ...$input
      */
-    public function __construct(...$input)
+    public function __construct(mixed ...$input)
     {
         $this->import(...$input);
     }
@@ -42,10 +42,9 @@ class Collection implements IteratorAggregate, HashMap
     /**
      * Import style data
      *
-     * @param mixed ...$input
      * @return $this
      */
-    public function import(...$input): Collection
+    public function import(mixed ...$input): static
     {
         foreach ($input as $data) {
             if (is_string($data)) {

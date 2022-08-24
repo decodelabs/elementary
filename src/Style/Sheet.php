@@ -22,31 +22,29 @@ use Traversable;
 /**
  * @implements IteratorAggregate<string, Collection>
  */
-class Sheet implements IteratorAggregate, Dumpable
+class Sheet implements
+    IteratorAggregate,
+    Dumpable
 {
     public const MUTABLE = true;
 
     /**
      * @var array<string, Collection>
      */
-    protected $blocks = [];
+    protected array $blocks = [];
 
     /**
      * Init with styles
-     *
-     * @param mixed ...$input
      */
-    public function __construct(...$input)
+    public function __construct(mixed ...$input)
     {
         $this->import(...$input);
     }
 
     /**
      * Import style data
-     *
-     * @param mixed ...$input
      */
-    public function import(...$input): Sheet
+    public function import(mixed ...$input): static
     {
         foreach ($input as $data) {
             if (is_string($data)) {
@@ -97,11 +95,11 @@ class Sheet implements IteratorAggregate, Dumpable
 
     /**
      * Direct set a value
-     *
-     * @param mixed $value
      */
-    public function set(string $key, $value): Sheet
-    {
+    public function set(
+        string $key,
+        mixed $value
+    ): static {
         if (!$value instanceof Collection) {
             $value = new Collection($value);
         }
@@ -129,7 +127,7 @@ class Sheet implements IteratorAggregate, Dumpable
     /**
      * Remove style list
      */
-    public function remove(string $key): Sheet
+    public function remove(string $key): static
     {
         unset($this->blocks[$key]);
         return $this;

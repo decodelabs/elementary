@@ -13,12 +13,14 @@ use Countable;
 
 use DecodeLabs\Glitch\Dumpable;
 
-class ClassList implements Countable, Dumpable
+class ClassList implements
+    Countable,
+    Dumpable
 {
     /**
      * @var array<string, bool>
      */
-    protected $classes = [];
+    protected array $classes = [];
 
     /**
      * Init with list
@@ -33,7 +35,7 @@ class ClassList implements Countable, Dumpable
      *
      * @return $this
      */
-    public function add(?string ...$classes): ClassList
+    public function add(?string ...$classes): static
     {
         foreach ($classes as $value) {
             if ($value === null) {
@@ -85,7 +87,7 @@ class ClassList implements Countable, Dumpable
      *
      * @return $this
      */
-    public function remove(?string ...$classes): ClassList
+    public function remove(?string ...$classes): static
     {
         foreach ($classes as $class) {
             if ($class === null) {
@@ -103,7 +105,7 @@ class ClassList implements Countable, Dumpable
      *
      * @return $this
      */
-    public function clear(): ClassList
+    public function clear(): static
     {
         $this->classes = [];
         return $this;

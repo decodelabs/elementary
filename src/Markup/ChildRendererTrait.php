@@ -19,11 +19,11 @@ trait ChildRendererTrait
 {
     /**
      * Convert child element to string
-     *
-     * @param mixed $value
      */
-    protected function renderChild($value, bool $pretty = false): string
-    {
+    protected function renderChild(
+        mixed $value,
+        bool $pretty = false
+    ): string {
         if (
             is_callable($value) &&
             is_object($value)

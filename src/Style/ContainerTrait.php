@@ -16,10 +16,9 @@ trait ContainerTrait
     /**
      * Replace style list
      *
-     * @param mixed ...$styles
      * @return $this
      */
-    public function setStyles(...$styles): Container
+    public function setStyles(mixed ...$styles): static
     {
         $collection = $this->getStyles();
         $collection->clear();
@@ -30,10 +29,9 @@ trait ContainerTrait
     /**
      * Merge style list
      *
-     * @param mixed ...$styles
      * @return $this
      */
-    public function addStyles(...$styles): Container
+    public function addStyles(mixed ...$styles): static
     {
         $this->getStyles()->import(...$styles);
         return $this;
@@ -48,17 +46,24 @@ trait ContainerTrait
             $this->attributes['style'] = new Collection();
         }
 
+        if (!$this->attributes['style'] instanceof Collection) {
+            $this->attributes['style'] = new Collection(
+                $this->attributes['style']
+            );
+        }
+
         return $this->attributes['style'];
     }
 
     /**
      * Set a single style value
      *
-     * @param string|Stringable|int|float|null $value
      * @return $this
      */
-    public function setStyle(string $key, $value): Container
-    {
+    public function setStyle(
+        string $key,
+        string|Stringable|int|float|null $value
+    ): static {
         $styles = $this->getStyles();
 
         if ($value === null) {
@@ -83,7 +88,7 @@ trait ContainerTrait
      *
      * @return $this
      */
-    public function removeStyle(string ...$keys): Container
+    public function removeStyle(string ...$keys): static
     {
         $this->getStyles()->remove(...$keys);
         return $this;
@@ -110,7 +115,7 @@ trait ContainerTrait
      *
      * @return $this
      */
-    public function clearStyles(): Container
+    public function clearStyles(): static
     {
         $this->getStyles()->clear();
         return $this;

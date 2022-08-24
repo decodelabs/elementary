@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace DecodeLabs\Elementary\Attribute\ClassList;
 
+use DecodeLabs\Coercion;
 use DecodeLabs\Collections\ArrayUtils;
 use DecodeLabs\Elementary\Attribute\ClassList;
 
@@ -17,10 +18,9 @@ trait ContainerTrait
     /**
      * Replace class list
      *
-     * @param mixed ...$classes
      * @return $this
      */
-    public function setClasses(...$classes): Container
+    public function setClasses(mixed ...$classes): static
     {
         /** @var array<string> $classes */
         $classes = ArrayUtils::collapse($classes, false, true, true);
@@ -31,10 +31,9 @@ trait ContainerTrait
     /**
      * Add class set to list
      *
-     * @param mixed ...$classes
      * @return $this
      */
-    public function addClasses(...$classes): Container
+    public function addClasses(mixed ...$classes): static
     {
         /** @var array<string> $classes */
         $classes = ArrayUtils::collapse($classes, false, true, true);
@@ -51,6 +50,12 @@ trait ContainerTrait
             $this->attributes['class'] = new ClassList();
         }
 
+        if (!$this->attributes['class'] instanceof ClassList) {
+            $this->attributes['class'] = new ClassList(
+                Coercion::toString($this->attributes['class'])
+            );
+        }
+
         return $this->attributes['class'];
     }
 
@@ -59,7 +64,7 @@ trait ContainerTrait
      *
      * @return $this
      */
-    public function setClass(?string ...$classes): Container
+    public function setClass(?string ...$classes): static
     {
         $this->getClasses()->clear()->add(...$classes);
         return $this;
@@ -70,7 +75,7 @@ trait ContainerTrait
      *
      * @return $this
      */
-    public function addClass(?string ...$classes): Container
+    public function addClass(?string ...$classes): static
     {
         $this->getClasses()->add(...$classes);
         return $this;
@@ -81,7 +86,7 @@ trait ContainerTrait
      *
      * @return $this
      */
-    public function removeClass(?string ...$classes): Container
+    public function removeClass(?string ...$classes): static
     {
         $this->getClasses()->remove(...$classes);
         return $this;
@@ -108,7 +113,7 @@ trait ContainerTrait
      *
      * @return $this
      */
-    public function clearClasses(): Container
+    public function clearClasses(): static
     {
         $this->getClasses()->clear();
         return $this;
