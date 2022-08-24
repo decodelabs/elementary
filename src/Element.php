@@ -14,15 +14,16 @@ use DecodeLabs\Collections\Sequence;
 /**
  * @extends Sequence<mixed>
  */
-interface Element extends Tag, Sequence
+interface Element extends
+    Tag,
+    Sequence
 {
     public const MUTABLE = true;
 
     /**
-     * @param mixed $body
      * @return $this
      */
-    public function setBody($body): Element;
+    public function setBody(mixed $body): static;
 
     public function render(bool $pretty = false): ?Buffer;
     public function renderContent(bool $pretty = false): ?Buffer;

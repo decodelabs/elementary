@@ -11,10 +11,7 @@ namespace DecodeLabs\Elementary;
 
 trait BufferTrait
 {
-    /**
-     * @var string
-     */
-    protected $content;
+    protected string $content = '';
 
     /**
      * Init with content
@@ -35,7 +32,7 @@ trait BufferTrait
     /**
      * Add content to start
      */
-    public function prepend(?string $content): Buffer
+    public function prepend(?string $content): static
     {
         $this->content = $content . $this->content;
         return $this;
@@ -44,7 +41,7 @@ trait BufferTrait
     /**
      * Add content to end
      */
-    public function append(?string $content): Buffer
+    public function append(?string $content): static
     {
         $this->content .= $content;
         return $this;
@@ -53,7 +50,7 @@ trait BufferTrait
     /**
      * Replace content
      */
-    public function replace(?string $content): Buffer
+    public function replace(?string $content): static
     {
         $this->content = (string)$content;
         return $this;

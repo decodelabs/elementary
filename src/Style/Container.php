@@ -14,31 +14,31 @@ use Stringable;
 interface Container
 {
     /**
-     * @param mixed ...$styles
      * @return $this
      */
-    public function setStyles(...$styles): Container;
+    public function setStyles(mixed ...$styles): static;
 
     /**
-     * @param mixed ...$styles
      * @return $this
      */
-    public function addStyles(...$styles): Container;
+    public function addStyles(mixed ...$styles): static;
 
     public function getStyles(): Collection;
 
     /**
-     * @param string|Stringable|int|float|null $value
      * @return $this
      */
-    public function setStyle(string $key, $value): Container;
+    public function setStyle(
+        string $key,
+        string|Stringable|int|float|null $value
+    ): static;
 
     public function getStyle(string $key): ?string;
 
     /**
      * @return $this
      */
-    public function removeStyle(string ...$keys): Container;
+    public function removeStyle(string ...$keys): static;
 
     public function hasStyle(string ...$keys): bool;
     public function hasStyles(string ...$keys): bool;
@@ -46,5 +46,5 @@ interface Container
     /**
      * @return $this
      */
-    public function clearStyles(): Container;
+    public function clearStyles(): static;
 }

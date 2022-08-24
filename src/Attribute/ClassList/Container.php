@@ -15,33 +15,31 @@ use DecodeLabs\Elementary\Attribute\ClassList;
 interface Container extends AttributeContainer
 {
     /**
-     * @param mixed ...$classes
      * @return $this
      */
-    public function setClasses(...$classes): Container;
+    public function setClasses(mixed ...$classes): static;
 
     /**
-     * @param mixed ...$classes
      * @return $this
      */
-    public function addClasses(...$classes): Container;
+    public function addClasses(mixed ...$classes): static;
 
     public function getClasses(): ClassList;
 
     /**
      * @return $this
      */
-    public function setClass(?string ...$classes): Container;
+    public function setClass(?string ...$classes): static;
 
     /**
      * @return $this
      */
-    public function addClass(?string ...$classes): Container;
+    public function addClass(?string ...$classes): static;
 
     /**
      * @return $this
      */
-    public function removeClass(?string ...$classes): Container;
+    public function removeClass(?string ...$classes): static;
 
     public function hasClass(string ...$classes): bool;
     public function hasClasses(string ...$classes): bool;
@@ -49,7 +47,7 @@ interface Container extends AttributeContainer
     /**
      * @return $this
      */
-    public function clearClasses(): Container;
+    public function clearClasses(): static;
 
     public function countClasses(): int;
 }

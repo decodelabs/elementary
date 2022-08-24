@@ -22,11 +22,12 @@ trait ElementTrait
 
     /**
      * Init with name, content and attributes
-     *
-     * @param mixed $content
      */
-    public function __construct(string $name, $content, array $attributes = null)
-    {
+    public function __construct(
+        string $name,
+        mixed $content,
+        array $attributes = null
+    ) {
         parent::__construct($name, $attributes);
 
         if (
@@ -78,10 +79,8 @@ trait ElementTrait
 
     /**
      * Replace all content with new body
-     *
-     * @param mixed $body
      */
-    public function setBody($body): Element
+    public function setBody(mixed $body): static
     {
         $this->clear();
         $this->append($body);

@@ -15,12 +15,15 @@ use DecodeLabs\Collections\AttributeContainer;
 /**
  * @extends \ArrayAccess<string, mixed>
  */
-interface Tag extends Markup, AttributeContainer, ArrayAccess
+interface Tag extends
+    Markup,
+    AttributeContainer,
+    ArrayAccess
 {
     /**
      * @return $this
      */
-    public function setName(string $name): Tag;
+    public function setName(string $name): static;
 
     public function getName(): string;
     public static function isClosableTagName(string $name): bool;
@@ -28,7 +31,7 @@ interface Tag extends Markup, AttributeContainer, ArrayAccess
     /**
      * @return $this
      */
-    public function setId(?string $id): Tag;
+    public function setId(?string $id): static;
     public function getId(): ?string;
 
     public function isInline(): bool;
@@ -40,17 +43,13 @@ interface Tag extends Markup, AttributeContainer, ArrayAccess
     /**
      * @return $this
      */
-    public function setClosable(bool $closable): Tag;
+    public function setClosable(bool $closable): static;
     public function isClosable(): bool;
-
-    /**
-     * @param mixed $content
-     */
-    public function renderWith($content = null, bool $pretty = false): ?Markup;
+    public function renderWith(mixed $content = null, bool $pretty = false): ?Markup;
 
     /**
      * @return $this
      */
-    public function setRenderEmpty(bool $render): Tag;
+    public function setRenderEmpty(bool $render): static;
     public function willRenderEmpty(): bool;
 }
