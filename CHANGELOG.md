@@ -1,3 +1,5 @@
+* Updated composer check script
+
 ## v0.2.2 (2022-09-08)
 * Updated Collections dependency
 * Updated CI environment
