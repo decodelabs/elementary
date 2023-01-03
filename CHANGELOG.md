@@ -1,3 +1,4 @@
+* Fixed attribute boolean resolution in string input
 * Migrated to use effigy in CI workflow
 * Fixed PHP8.1 testing
 * Updated composer check script

@@ -80,10 +80,18 @@ trait TagTrait
                 $first = substr($value, 0, 1);
                 $last = substr($value, -1);
 
-                if (strlen($value) > 1
-                && (($first == '"' && $last == '"')
-                || ($first == "'" && $last == "'"))) {
+                if (
+                    strlen($value) > 1 &&
+                    (
+                        ($first == '"' && $last == '"') ||
+                        ($first == "'" && $last == "'")
+                    )
+                ) {
                     $value = substr($value, 1, -1);
+                }
+
+                if ($value === '') {
+                    $value = true;
                 }
 
                 $this->setAttribute($key, $value);
