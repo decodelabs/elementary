@@ -3,11 +3,17 @@
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/decodelabs/elementary?style=flat)](https://packagist.org/packages/decodelabs/elementary)
 [![Latest Version](https://img.shields.io/packagist/v/decodelabs/elementary.svg?style=flat)](https://packagist.org/packages/decodelabs/elementary)
 [![Total Downloads](https://img.shields.io/packagist/dt/decodelabs/elementary.svg?style=flat)](https://packagist.org/packages/decodelabs/elementary)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/decodelabs/elementary/Integrate)](https://github.com/decodelabs/elementary/actions/workflows/integrate.yml)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/decodelabs/elementary/integrate.yml?branch=develop)](https://github.com/decodelabs/elementary/actions/workflows/integrate.yml)
 [![PHPStan](https://img.shields.io/badge/PHPStan-enabled-44CC11.svg?longCache=true&style=flat)](https://github.com/phpstan/phpstan)
 [![License](https://img.shields.io/packagist/l/decodelabs/elementary?style=flat)](https://packagist.org/packages/decodelabs/elementary)
 
-Shared base markup handling library for PHP.
+### Shared base markup handling library for PHP.
+
+Elementary is a middleware library designed to provide tools for building tag-base manipulation systems.
+
+_Get news and updates on the [DecodeLabs blog](https://blog.decodelabs.com)._
+
+---
 
 
 ## Installation

@@ -1,3 +1,9 @@
+## v0.2.3 (2023-01-03)
+* Fixed attribute boolean resolution in string input
+* Migrated to use effigy in CI workflow
+* Fixed PHP8.1 testing
+* Updated composer check script
+
 ## v0.2.2 (2022-09-08)
 * Updated Collections dependency
 * Updated CI environment
