@@ -1,3 +1,4 @@
+## v0.2.4 (2023-01-04)
 * Improved :attr binding support
 
 ## v0.2.3 (2023-01-03)
