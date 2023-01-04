@@ -277,27 +277,8 @@ trait TagTrait
         $attributes = [];
 
         foreach ($this->attributes as $key => $value) {
-            if ($value === null) {
-                $attributes[] = $key;
-            } elseif (is_bool($value)) {
-                if (
-                    substr($key, 0, 5) == 'data-' ||
-                    in_array($key, static::BOOLEAN_ATTRIBUTES)
-                ) {
-                    $attributes[] = $key . '="' . ($value ? 'true' : 'false') . '"';
-                } else {
-                    if ($value) {
-                        $attributes[] = $key;
-                    } else {
-                        continue;
-                    }
-                }
-            } elseif (is_array($value) || is_callable($value)) {
-                $attributes[] = $key . '="' . (string)$this->renderChild($value) . '"';
-            } elseif ($value instanceof Markup) {
-                $attributes[] = $key . '="' . (string)$value . '"';
-            } else {
-                $attributes[] = $key . '="' . $this->esc(Coercion::toString($value)) . '"';
+            if (null !== ($attr = $this->prepareAttribute($key, $value))) {
+                $attributes[] = $attr;
             }
         }
 
@@ -313,6 +294,53 @@ trait TagTrait
 
         $output .= '>';
         return $output;
+    }
+
+    protected function prepareAttribute(
+        string $key,
+        mixed $value
+    ): ?string {
+        // Null
+        if ($value === null) {
+            if (substr($key, 0, 1) == ':') {
+                return $key . '="null"';
+            }
+
+            return $key;
+        }
+
+        // Boolean
+        if (is_bool($value)) {
+            if (
+                substr($key, 0, 1) == ':' ||
+                substr($key, 0, 5) == 'data-' ||
+                in_array($key, static::BOOLEAN_ATTRIBUTES)
+            ) {
+                return $key . '="' . ($value ? 'true' : 'false') . '"';
+            }
+
+            if ($value) {
+                return $key;
+            }
+
+            return null;
+        }
+
+        // Renderable
+        if (
+            is_array($value) ||
+            is_callable($value)
+        ) {
+            return $key . '="' . (string)$this->renderChild($value) . '"';
+        }
+
+        // Markup
+        if ($value instanceof Markup) {
+            return $key . '="' . (string)$value . '"';
+        }
+
+        // String
+        return $key . '="' . $this->esc(Coercion::toString($value)) . '"';
     }
 
     /**
