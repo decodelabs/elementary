@@ -1,3 +1,5 @@
+* Added normalize() method to Elements
+
 ## v0.2.4 (2023-01-04)
 * Improved :attr binding support
 
