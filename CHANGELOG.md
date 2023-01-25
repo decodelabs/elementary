@@ -1,3 +1,4 @@
+## v0.2.5 (2023-01-25)
 * Added normalize() method to Elements
 
 ## v0.2.4 (2023-01-04)
