@@ -40,6 +40,28 @@ trait ElementTrait
         $this->merge($content);
     }
 
+
+    /**
+     * Normalize body content to individual items
+     *
+     * @return $this
+     */
+    public function normalize(): static
+    {
+        $items = [];
+
+        foreach ($this->items as $item) {
+            foreach ($this->normalizeChild($item, true) as $child) {
+                $items[] = $child;
+            }
+        }
+
+        $this->items = $items;
+        return $this;
+    }
+
+
+
     /**
      * Render to more readable string (for dump)
      */

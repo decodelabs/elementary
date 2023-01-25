@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace DecodeLabs\Elementary\Markup;
 
 use DecodeLabs\Coercion;
+use DecodeLabs\Elementary\Buffer;
 use DecodeLabs\Elementary\Element;
 use DecodeLabs\Elementary\Markup;
 
@@ -67,6 +68,50 @@ trait ChildRendererTrait
 
         return (string)$output;
     }
+
+    /**
+     * Normalize child elements
+     *
+     * @return Generator<mixed>
+     */
+    protected function normalizeChild(
+        mixed $value,
+        bool $pretty = false
+    ): Generator {
+        if (
+            is_callable($value) &&
+            is_object($value)
+        ) {
+            yield from $this->normalizeChild($value($this), $pretty);
+            return;
+        }
+
+        if ($value instanceof Proxy) {
+            $value = $value->toMarkup();
+        }
+
+        if (
+            is_iterable($value) &&
+            !$value instanceof Markup
+        ) {
+            foreach ($value as $part) {
+                yield $this->newBuffer($this->renderChild($part, $pretty));
+            }
+
+            if (
+                $value instanceof Generator &&
+                null !== ($part = $value->getReturn())
+            ) {
+                yield $this->newBuffer($this->renderChild($part, $pretty));
+            }
+
+            return;
+        }
+
+        yield $value;
+    }
+
+    abstract protected function newBuffer(?string $value): Buffer;
 
     /**
      * Escape HTML
