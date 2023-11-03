@@ -16,12 +16,16 @@ interface Container
     /**
      * @return $this
      */
-    public function setStyles(mixed ...$styles): static;
+    public function setStyles(
+        mixed ...$styles
+    ): static;
 
     /**
      * @return $this
      */
-    public function addStyles(mixed ...$styles): static;
+    public function addStyles(
+        mixed ...$styles
+    ): static;
 
     public function getStyles(): Collection;
 
@@ -33,15 +37,24 @@ interface Container
         string|Stringable|int|float|null $value
     ): static;
 
-    public function getStyle(string $key): ?string;
+    public function getStyle(
+        string $key
+    ): ?string;
 
     /**
      * @return $this
      */
-    public function removeStyle(string ...$keys): static;
+    public function removeStyle(
+        string ...$keys
+    ): static;
 
-    public function hasStyle(string ...$keys): bool;
-    public function hasStyles(string ...$keys): bool;
+    public function hasStyle(
+        string ...$keys
+    ): bool;
+
+    public function hasStyles(
+        string ...$keys
+    ): bool;
 
     /**
      * @return $this

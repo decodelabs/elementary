@@ -111,13 +111,15 @@ trait ChildRendererTrait
         yield $value;
     }
 
-    abstract protected function newBuffer(?string $value): Buffer;
-
+    abstract protected function newBuffer(
+        ?string $value
+    ): Buffer;
     /**
      * Escape HTML
      */
-    protected function esc(?string $value): ?string
-    {
+    protected function esc(
+        ?string $value
+    ): ?string {
         if ($value === null) {
             return null;
         }

@@ -23,15 +23,23 @@ interface Tag extends
     /**
      * @return $this
      */
-    public function setName(string $name): static;
+    public function setName(
+        string $name
+    ): static;
 
     public function getName(): string;
-    public static function isClosableTagName(string $name): bool;
+
+    public static function isClosableTagName(
+        string $name
+    ): bool;
 
     /**
      * @return $this
      */
-    public function setId(?string $id): static;
+    public function setId(
+        ?string $id
+    ): static;
+
     public function getId(): ?string;
 
     public function isInline(): bool;
@@ -43,13 +51,23 @@ interface Tag extends
     /**
      * @return $this
      */
-    public function setClosable(bool $closable): static;
+    public function setClosable(
+        bool $closable
+    ): static;
+
     public function isClosable(): bool;
-    public function renderWith(mixed $content = null, bool $pretty = false): ?Markup;
+
+    public function renderWith(
+        mixed $content = null,
+        bool $pretty = false
+    ): ?Markup;
 
     /**
      * @return $this
      */
-    public function setRenderEmpty(bool $render): static;
+    public function setRenderEmpty(
+        bool $render
+    ): static;
+
     public function willRenderEmpty(): bool;
 }

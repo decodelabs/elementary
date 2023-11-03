@@ -60,8 +60,9 @@ trait TagTrait
     /**
      * Parse css style selector into tag name, classes, etc
      */
-    public function setName(string $name): static
-    {
+    public function setName(
+        string $name
+    ): static {
         $origName = $name;
 
         if (false !== strpos($name, '[')) {
@@ -152,8 +153,9 @@ trait TagTrait
     /**
      * Is tag name a closable <tag /> type?
      */
-    public static function isClosableTagName(string $name): bool
-    {
+    public static function isClosableTagName(
+        string $name
+    ): bool {
         return false;
     }
 
@@ -161,8 +163,9 @@ trait TagTrait
     /**
      * Direct set id attribute
      */
-    public function setId(?string $id): static
-    {
+    public function setId(
+        ?string $id
+    ): static {
         if ($id === null) {
             $this->removeAttribute('id');
             return $this;
@@ -247,15 +250,18 @@ trait TagTrait
     /**
      * Create new local buffer
      */
-    abstract protected function newBuffer(?string $content): Buffer;
+    abstract protected function newBuffer(
+        ?string $content
+    ): Buffer;
 
 
 
     /**
      * Set whether to render tag if no content
      */
-    public function setRenderEmpty(bool $render): static
-    {
+    public function setRenderEmpty(
+        bool $render
+    ): static {
         $this->renderEmpty = $render;
         return $this;
     }
@@ -358,8 +364,9 @@ trait TagTrait
     /**
      * Manually override whether tag has closing tag, or is single inline tag
      */
-    public function setClosable(bool $closable): static
-    {
+    public function setClosable(
+        bool $closable
+    ): static {
         $this->closable = $closable;
         return $this;
     }
@@ -398,24 +405,27 @@ trait TagTrait
     /**
      * Shortcut to get attribute
      */
-    public function offsetGet(mixed $key): mixed
-    {
+    public function offsetGet(
+        mixed $key
+    ): mixed {
         return $this->getAttribute(Coercion::toString($key));
     }
 
     /**
      * Shortcut to test for attribute
      */
-    public function offsetExists(mixed $key): bool
-    {
+    public function offsetExists(
+        mixed $key
+    ): bool {
         return $this->hasAttribute(Coercion::toString($key));
     }
 
     /**
      * Shortcut to remove attribute
      */
-    public function offsetUnset(mixed $key): void
-    {
+    public function offsetUnset(
+        mixed $key
+    ): void {
         $this->removeAttribute(Coercion::toString($key));
     }
 

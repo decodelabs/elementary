@@ -17,32 +17,47 @@ interface Container extends AttributeContainer
     /**
      * @return $this
      */
-    public function setClasses(mixed ...$classes): static;
+    public function setClasses(
+        mixed ...$classes
+    ): static;
 
     /**
      * @return $this
      */
-    public function addClasses(mixed ...$classes): static;
+    public function addClasses(
+        mixed ...$classes
+    ): static;
 
     public function getClasses(): ClassList;
 
     /**
      * @return $this
      */
-    public function setClass(?string ...$classes): static;
+    public function setClass(
+        ?string ...$classes
+    ): static;
 
     /**
      * @return $this
      */
-    public function addClass(?string ...$classes): static;
+    public function addClass(
+        ?string ...$classes
+    ): static;
 
     /**
      * @return $this
      */
-    public function removeClass(?string ...$classes): static;
+    public function removeClass(
+        ?string ...$classes
+    ): static;
 
-    public function hasClass(string ...$classes): bool;
-    public function hasClasses(string ...$classes): bool;
+    public function hasClass(
+        string ...$classes
+    ): bool;
+
+    public function hasClasses(
+        string ...$classes
+    ): bool;
 
     /**
      * @return $this

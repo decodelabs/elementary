@@ -34,8 +34,9 @@ class Collection implements
     /**
      * Init with styles
      */
-    public function __construct(mixed ...$input)
-    {
+    public function __construct(
+        mixed ...$input
+    ) {
         $this->import(...$input);
     }
 
@@ -44,8 +45,9 @@ class Collection implements
      *
      * @return $this
      */
-    public function import(mixed ...$input): static
-    {
+    public function import(
+        mixed ...$input
+    ): static {
         foreach ($input as $data) {
             if (is_string($data)) {
                 $data = $this->parse($data);
@@ -70,8 +72,9 @@ class Collection implements
      *
      * @return array<string, string>
      */
-    protected function parse(string $style): array
-    {
+    protected function parse(
+        string $style
+    ): array {
         $parts = explode(';', $style);
         $output = [];
 
@@ -97,8 +100,9 @@ class Collection implements
      *
      * @return array<string, string>
      */
-    public function export(string ...$keys): array
-    {
+    public function export(
+        string ...$keys
+    ): array {
         $output = [];
 
         foreach ($keys as $key) {

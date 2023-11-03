@@ -20,8 +20,9 @@ trait ContainerTrait
      *
      * @return $this
      */
-    public function setClasses(mixed ...$classes): static
-    {
+    public function setClasses(
+        mixed ...$classes
+    ): static {
         /** @var array<string> $classes */
         $classes = ArrayUtils::collapse($classes, false, true, true);
         $this->getClasses()->clear()->add(...$classes);
@@ -33,8 +34,9 @@ trait ContainerTrait
      *
      * @return $this
      */
-    public function addClasses(mixed ...$classes): static
-    {
+    public function addClasses(
+        mixed ...$classes
+    ): static {
         /** @var array<string> $classes */
         $classes = ArrayUtils::collapse($classes, false, true, true);
         $this->getClasses()->add(...$classes);
@@ -64,8 +66,9 @@ trait ContainerTrait
      *
      * @return $this
      */
-    public function setClass(?string ...$classes): static
-    {
+    public function setClass(
+        ?string ...$classes
+    ): static {
         $this->getClasses()->clear()->add(...$classes);
         return $this;
     }
@@ -75,8 +78,9 @@ trait ContainerTrait
      *
      * @return $this
      */
-    public function addClass(?string ...$classes): static
-    {
+    public function addClass(
+        ?string ...$classes
+    ): static {
         $this->getClasses()->add(...$classes);
         return $this;
     }
@@ -86,8 +90,9 @@ trait ContainerTrait
      *
      * @return $this
      */
-    public function removeClass(?string ...$classes): static
-    {
+    public function removeClass(
+        ?string ...$classes
+    ): static {
         $this->getClasses()->remove(...$classes);
         return $this;
     }
@@ -95,16 +100,18 @@ trait ContainerTrait
     /**
      * Does class list have any of these?
      */
-    public function hasClass(string ...$classes): bool
-    {
+    public function hasClass(
+        string ...$classes
+    ): bool {
         return $this->getClasses()->has(...$classes);
     }
 
     /**
      * Does class list have ALL of these?
      */
-    public function hasClasses(string ...$classes): bool
-    {
+    public function hasClasses(
+        string ...$classes
+    ): bool {
         return $this->getClasses()->hasAll(...$classes);
     }
 

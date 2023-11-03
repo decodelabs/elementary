@@ -18,8 +18,9 @@ trait ContainerTrait
      *
      * @return $this
      */
-    public function setStyles(mixed ...$styles): static
-    {
+    public function setStyles(
+        mixed ...$styles
+    ): static {
         $collection = $this->getStyles();
         $collection->clear();
         $collection->import(...$styles);
@@ -31,8 +32,9 @@ trait ContainerTrait
      *
      * @return $this
      */
-    public function addStyles(mixed ...$styles): static
-    {
+    public function addStyles(
+        mixed ...$styles
+    ): static {
         $this->getStyles()->import(...$styles);
         return $this;
     }
@@ -78,8 +80,9 @@ trait ContainerTrait
     /**
      * Get a single style value
      */
-    public function getStyle(string $key): ?string
-    {
+    public function getStyle(
+        string $key
+    ): ?string {
         return $this->getStyles()->get($key);
     }
 
@@ -88,8 +91,9 @@ trait ContainerTrait
      *
      * @return $this
      */
-    public function removeStyle(string ...$keys): static
-    {
+    public function removeStyle(
+        string ...$keys
+    ): static {
         $this->getStyles()->remove(...$keys);
         return $this;
     }
@@ -97,16 +101,18 @@ trait ContainerTrait
     /**
      * List has any of these styles?
      */
-    public function hasStyle(string ...$keys): bool
-    {
+    public function hasStyle(
+        string ...$keys
+    ): bool {
         return $this->getStyles()->has(...$keys);
     }
 
     /**
      * List has ALL of these styles?
      */
-    public function hasStyles(string ...$keys): bool
-    {
+    public function hasStyles(
+        string ...$keys
+    ): bool {
         return $this->getStyles()->hasAll(...$keys);
     }
 

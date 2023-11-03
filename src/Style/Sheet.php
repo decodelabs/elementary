@@ -36,16 +36,18 @@ class Sheet implements
     /**
      * Init with styles
      */
-    public function __construct(mixed ...$input)
-    {
+    public function __construct(
+        mixed ...$input
+    ) {
         $this->import(...$input);
     }
 
     /**
      * Import style data
      */
-    public function import(mixed ...$input): static
-    {
+    public function import(
+        mixed ...$input
+    ): static {
         foreach ($input as $data) {
             if (is_string($data)) {
                 $data = $this->parse($data);
@@ -72,8 +74,9 @@ class Sheet implements
      *
      * @return array<string, Collection>
      */
-    protected function parse(string $style): array
-    {
+    protected function parse(
+        string $style
+    ): array {
         $parts = explode('{', $style);
         $output = [];
 
@@ -111,24 +114,27 @@ class Sheet implements
     /**
      * Get a style list
      */
-    public function get(string $key): ?Collection
-    {
+    public function get(
+        string $key
+    ): ?Collection {
         return $this->blocks[$key] ?? null;
     }
 
     /**
      * Has style list set?
      */
-    public function has(string $key): bool
-    {
+    public function has(
+        string $key
+    ): bool {
         return isset($this->blocks[$key]);
     }
 
     /**
      * Remove style list
      */
-    public function remove(string $key): static
-    {
+    public function remove(
+        string $key
+    ): static {
         unset($this->blocks[$key]);
         return $this;
     }

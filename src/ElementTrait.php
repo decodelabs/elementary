@@ -65,8 +65,9 @@ trait ElementTrait
     /**
      * Render to more readable string (for dump)
      */
-    public function render(bool $pretty = false): ?Buffer
-    {
+    public function render(
+        bool $pretty = false
+    ): ?Buffer {
         if (null === ($output = $this->renderWith(
             $this->renderContent($pretty),
             $pretty
@@ -80,8 +81,9 @@ trait ElementTrait
     /**
      * Render inner content
      */
-    public function renderContent(bool $pretty = false): ?Buffer
-    {
+    public function renderContent(
+        bool $pretty = false
+    ): ?Buffer {
         $output = '';
 
         foreach ($this->items as $value) {
@@ -102,8 +104,9 @@ trait ElementTrait
     /**
      * Replace all content with new body
      */
-    public function setBody(mixed $body): static
-    {
+    public function setBody(
+        mixed $body
+    ): static {
         $this->clear();
         $this->append($body);
         return $this;
