@@ -1,3 +1,5 @@
+* Made PHP8.1 minimum version
+
 ## v0.2.5 (2023-01-25)
 * Added normalize() method to Elements
 
