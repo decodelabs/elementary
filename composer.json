@@ -2,14 +2,14 @@
     "name": "decodelabs/elementary",
     "description": "Shared base markup handling library",
     "type": "library",
-    "keywords": ["markup", "html", "xml"],
+    "keywords": [ "markup", "html", "xml" ],
     "license": "MIT",
-    "authors": [{
-        "name": "Tom Wright",
-        "email": "tom@inflatablecookie.com"
-    }],
+    "authors": [ {
+            "name": "Tom Wright",
+            "email": "tom@inflatablecookie.com"
+        } ],
     "require": {
-        "php": "^8.0",
+        "php": "^8.1",
 
         "decodelabs/coercion": "^0.2",
         "decodelabs/exceptional": "^0.4",

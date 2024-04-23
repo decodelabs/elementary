@@ -23,13 +23,20 @@ interface Element extends
     /**
      * @return $this
      */
-    public function setBody(mixed $body): static;
+    public function setBody(
+        mixed $body
+    ): static;
 
     /**
      * @return $this
      */
     public function normalize(): static;
 
-    public function render(bool $pretty = false): ?Buffer;
-    public function renderContent(bool $pretty = false): ?Buffer;
+    public function render(
+        bool $pretty = false
+    ): ?Buffer;
+
+    public function renderContent(
+        bool $pretty = false
+    ): ?Buffer;
 }

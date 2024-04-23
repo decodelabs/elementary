@@ -25,8 +25,9 @@ class ClassList implements
     /**
      * Init with list
      */
-    public function __construct(string ...$classes)
-    {
+    public function __construct(
+        string ...$classes
+    ) {
         $this->add(...$classes);
     }
 
@@ -35,8 +36,9 @@ class ClassList implements
      *
      * @return $this
      */
-    public function add(?string ...$classes): static
-    {
+    public function add(
+        ?string ...$classes
+    ): static {
         foreach ($classes as $value) {
             if ($value === null) {
                 continue;
@@ -57,8 +59,9 @@ class ClassList implements
     /**
      * Has class(es) in list
      */
-    public function has(string ...$classes): bool
-    {
+    public function has(
+        string ...$classes
+    ): bool {
         foreach ($classes as $class) {
             if (isset($this->classes[$class])) {
                 return true;
@@ -71,8 +74,9 @@ class ClassList implements
     /**
      * Has all classes in list
      */
-    public function hasAll(string ...$classes): bool
-    {
+    public function hasAll(
+        string ...$classes
+    ): bool {
         foreach ($classes as $class) {
             if (!isset($this->classes[$class])) {
                 return false;
@@ -87,8 +91,9 @@ class ClassList implements
      *
      * @return $this
      */
-    public function remove(?string ...$classes): static
-    {
+    public function remove(
+        ?string ...$classes
+    ): static {
         foreach ($classes as $class) {
             if ($class === null) {
                 continue;
