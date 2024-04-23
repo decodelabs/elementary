@@ -234,7 +234,7 @@ trait TagTrait
             $isBlock &&
             false !== strpos($content, '<')
         ) {
-            $content = "\n  " . str_replace("\n", "\n  ", rtrim($content, "\n")) . "\n";
+            $content = "\n  " . str_replace(">\n", ">\n  ", rtrim($content, "\n")) . "\n";
         }
 
         $output = $this->open() . $content . $this->close();
