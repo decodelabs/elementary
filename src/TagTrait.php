@@ -212,7 +212,7 @@ trait TagTrait
     public function renderWith(
         mixed $content = null,
         bool $pretty = false
-    ): ?Markup {
+    ): ?Buffer {
         if ($this->closable) {
             if (
                 !$this->renderEmpty &&

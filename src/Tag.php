@@ -60,7 +60,7 @@ interface Tag extends
     public function renderWith(
         mixed $content = null,
         bool $pretty = false
-    ): ?Markup;
+    ): ?Buffer;
 
     /**
      * @return $this
