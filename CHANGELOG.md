@@ -1,3 +1,6 @@
+## v0.2.7 (2024-04-23)
+* Only re-align pretty content after tag close
+
 ## v0.2.6 (2024-04-23)
 * Tag renderWith() return Buffer
 * Made PHP8.1 minimum version
