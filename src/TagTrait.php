@@ -431,6 +431,15 @@ trait TagTrait
 
 
 
+    /**
+     * Serialize to json
+     */
+    public function jsonSerialize(): mixed
+    {
+        return (string)$this;
+    }
+
+
 
     /**
      * Export for dump inspection
