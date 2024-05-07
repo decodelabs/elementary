@@ -1,3 +1,5 @@
+* Added JsonSerializable to Markup interface
+
 ## v0.2.7 (2024-04-23)
 * Only re-align pretty content after tag close
 
