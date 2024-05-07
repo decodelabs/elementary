@@ -1,3 +1,4 @@
+## v0.3.0 (2024-05-07)
 * Added JsonSerializable to Markup interface
 
 ## v0.2.7 (2024-04-23)
