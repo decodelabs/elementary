@@ -18,7 +18,7 @@ trait ElementTrait
      */
     use SequenceTrait;
 
-    // public const MUTABLE = true;
+    // protected const Mutable = true;
 
     /**
      * Init with name, content and attributes

@@ -23,8 +23,8 @@ trait TagTrait
     use AttributeContainerTrait;
     use ChildRendererTrait;
 
-    // public const BOOLEAN_ATTRIBUTES = [];
-    // public const INLINE_TAGS = [];
+    // protected const InlineTags = [];
+    // protected const BooleanAttributes = [];
 
     protected string $name;
     protected bool $closable = true;
@@ -194,7 +194,7 @@ trait TagTrait
      */
     public function isInline(): bool
     {
-        return in_array(strtolower($this->name), self::INLINE_TAGS);
+        return in_array(strtolower($this->name), self::InlineTags);
     }
 
     /**
@@ -320,7 +320,7 @@ trait TagTrait
             if (
                 substr($key, 0, 1) == ':' ||
                 substr($key, 0, 5) == 'data-' ||
-                in_array($key, static::BOOLEAN_ATTRIBUTES)
+                in_array($key, static::BooleanAttributes)
             ) {
                 return $key . '="' . ($value ? 'true' : 'false') . '"';
             }
