@@ -10,11 +10,9 @@ declare(strict_types=1);
 namespace DecodeLabs\Elementary\Style;
 
 use ArrayIterator;
-
 use DecodeLabs\Collections\ArrayProvider;
 use DecodeLabs\Exceptional;
 use DecodeLabs\Glitch\Dumpable;
-
 use IteratorAggregate;
 use Throwable;
 use Traversable;
@@ -26,7 +24,7 @@ class Sheet implements
     IteratorAggregate,
     Dumpable
 {
-    public const MUTABLE = true;
+    protected const Mutable = true;
 
     /**
      * @var array<string, Collection>

@@ -18,8 +18,6 @@ interface Element extends
     Tag,
     Sequence
 {
-    public const MUTABLE = true;
-
     /**
      * @return $this
      */

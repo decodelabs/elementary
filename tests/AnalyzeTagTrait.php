@@ -26,15 +26,16 @@ class AnalyzeTagTrait implements
     use ClassListContainerTrait;
     use StyleContainerTrait;
 
-    const INLINE_TAGS = [];
-    const BOOLEAN_ATTRIBUTES = [];
+    protected const InlineTags = [];
+    protected const BooleanAttributes = [];
 
 
     /**
      * Create new buffer
      */
-    protected function newBuffer(?string $content): Buffer
-    {
+    protected function newBuffer(
+        ?string $content
+    ): Buffer {
         return new AnalyzeBufferTrait($content);
     }
 }

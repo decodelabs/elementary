@@ -13,7 +13,6 @@ use DecodeLabs\Collections\ArrayProvider;
 use DecodeLabs\Collections\HashMap;
 use DecodeLabs\Collections\Native\HashMapTrait;
 use DecodeLabs\Exceptional;
-
 use IteratorAggregate;
 
 /**
@@ -29,7 +28,7 @@ class Collection implements
      */
     use HashMapTrait;
 
-    public const MUTABLE = true;
+    protected const Mutable = true;
 
     /**
      * Init with styles

@@ -1,3 +1,5 @@
+* Converted consts to protected PascalCase
+
 ## v0.3.0 (2024-05-07)
 * Added JsonSerializable to Markup interface
 
