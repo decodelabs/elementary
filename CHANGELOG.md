@@ -1,3 +1,4 @@
+## v0.4.0 (2024-8-21)
 * Converted consts to protected PascalCase
 
 ## v0.3.0 (2024-05-07)
