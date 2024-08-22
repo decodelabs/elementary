@@ -11,6 +11,9 @@ namespace DecodeLabs\Elementary\Style;
 
 use Stringable;
 
+/**
+ * @phpstan-require-implements Container
+ */
 trait ContainerTrait
 {
     /**

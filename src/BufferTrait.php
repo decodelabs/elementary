@@ -9,6 +9,9 @@ declare(strict_types=1);
 
 namespace DecodeLabs\Elementary;
 
+/**
+ * @phpstan-require-implements Buffer
+ */
 trait BufferTrait
 {
     protected string $content = '';

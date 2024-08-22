@@ -11,6 +11,9 @@ namespace DecodeLabs\Elementary;
 
 use DecodeLabs\Collections\Native\SequenceTrait;
 
+/**
+ * @phpstan-require-implements Element
+ */
 trait ElementTrait
 {
     /**

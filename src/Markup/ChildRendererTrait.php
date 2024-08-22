@@ -13,7 +13,6 @@ use DecodeLabs\Coercion;
 use DecodeLabs\Elementary\Buffer;
 use DecodeLabs\Elementary\Element;
 use DecodeLabs\Elementary\Markup;
-
 use Generator;
 
 trait ChildRendererTrait

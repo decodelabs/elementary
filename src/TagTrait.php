@@ -17,6 +17,7 @@ use DecodeLabs\Exceptional;
 
 /**
  * @implements \ArrayAccess<string, mixed>
+ * @phpstan-require-implements Tag
  */
 trait TagTrait
 {

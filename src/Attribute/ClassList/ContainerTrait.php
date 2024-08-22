@@ -13,6 +13,9 @@ use DecodeLabs\Coercion;
 use DecodeLabs\Collections\ArrayUtils;
 use DecodeLabs\Elementary\Attribute\ClassList;
 
+/**
+ * @phpstan-require-implements Container
+ */
 trait ContainerTrait
 {
     /**
