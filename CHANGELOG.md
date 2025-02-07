@@ -1,6 +1,8 @@
+## v0.4.1 (2025-02-07)
+* Fixed implicit nullable arguments
 * Added @phpstan-require-implements constraints
 
-## v0.4.0 (2024-8-21)
+## v0.4.0 (2024-08-21)
 * Converted consts to protected PascalCase
 
 ## v0.3.0 (2024-05-07)

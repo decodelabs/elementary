@@ -29,7 +29,7 @@ trait ElementTrait
     public function __construct(
         string $name,
         mixed $content,
-        array $attributes = null
+        ?array $attributes = null
     ) {
         parent::__construct($name, $attributes);
 

@@ -40,7 +40,7 @@ trait TagTrait
      */
     public function __construct(
         string $name,
-        array $attributes = null
+        ?array $attributes = null
     ) {
         $this->setName($name);
 
