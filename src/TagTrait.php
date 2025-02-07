@@ -17,6 +17,7 @@ use DecodeLabs\Exceptional;
 
 /**
  * @implements \ArrayAccess<string, mixed>
+ * @phpstan-require-implements Tag
  */
 trait TagTrait
 {
@@ -39,7 +40,7 @@ trait TagTrait
      */
     public function __construct(
         string $name,
-        array $attributes = null
+        ?array $attributes = null
     ) {
         $this->setName($name);
 

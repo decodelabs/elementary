@@ -11,6 +11,9 @@ namespace DecodeLabs\Elementary;
 
 use DecodeLabs\Collections\Native\SequenceTrait;
 
+/**
+ * @phpstan-require-implements Element
+ */
 trait ElementTrait
 {
     /**
@@ -26,7 +29,7 @@ trait ElementTrait
     public function __construct(
         string $name,
         mixed $content,
-        array $attributes = null
+        ?array $attributes = null
     ) {
         parent::__construct($name, $attributes);
 
