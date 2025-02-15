@@ -24,8 +24,6 @@ class Sheet implements
     IteratorAggregate,
     Dumpable
 {
-    protected const Mutable = true;
-
     /**
      * @var array<string, Collection>
      */
@@ -56,7 +54,10 @@ class Sheet implements
             } elseif ($data === null) {
                 continue;
             } elseif (!is_array($data)) {
-                throw Exceptional::InvalidArgument('Invalid style data', null, $data);
+                throw Exceptional::InvalidArgument(
+                    message: 'Invalid style data',
+                    data: $data
+                );
             }
 
             foreach ($data as $key => $value) {

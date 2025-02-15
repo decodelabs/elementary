@@ -21,6 +21,9 @@ use DecodeLabs\Exceptional;
  */
 trait TagTrait
 {
+    /**
+     * @use AttributeContainerTrait<string>
+     */
     use AttributeContainerTrait;
     use ChildRendererTrait;
 
@@ -72,9 +75,8 @@ trait TagTrait
 
                 if (empty($key = array_shift($parts))) {
                     throw Exceptional::UnexpectedValue(
-                        'Invalid tag attribute definition',
-                        null,
-                        $res
+                        message: 'Invalid tag attribute definition',
+                        data: $res
                     );
                 }
 
@@ -85,8 +87,14 @@ trait TagTrait
                 if (
                     strlen($value) > 1 &&
                     (
-                        ($first == '"' && $last == '"') ||
-                        ($first == "'" && $last == "'")
+                        (
+                            $first == '"' &&
+                            $last == '"'
+                        ) ||
+                        (
+                            $first == "'" &&
+                            $last == "'"
+                        )
                     )
                 ) {
                     $value = substr($value, 1, -1);
@@ -112,9 +120,8 @@ trait TagTrait
 
         if (empty($name = array_shift($parts))) {
             throw Exceptional::UnexpectedValue(
-                'Unable to parse tag class definition',
-                null,
-                $origName
+                message: 'Unable to parse tag class definition',
+                data: $origName
             );
         }
 
@@ -173,7 +180,9 @@ trait TagTrait
         }
 
         if (preg_match('/\s/', $id)) {
-            throw Exceptional::InvalidArgument('Invalid tag id: ' . $id);
+            throw Exceptional::InvalidArgument(
+                message: 'Invalid tag id: ' . $id
+            );
         }
 
         $this->setAttribute('id', $id);
@@ -240,7 +249,10 @@ trait TagTrait
 
         $output = $this->open() . $content . $this->close();
 
-        if ($pretty && $isBlock) {
+        if (
+            $pretty &&
+            $isBlock
+        ) {
             $output .= "\n";
         }
 

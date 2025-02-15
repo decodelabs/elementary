@@ -13,7 +13,8 @@ use ArrayAccess;
 use DecodeLabs\Collections\AttributeContainer;
 
 /**
- * @extends \ArrayAccess<string, mixed>
+ * @extends ArrayAccess<string,mixed>
+ * @extends AttributeContainer<string>
  */
 interface Tag extends
     Markup,
