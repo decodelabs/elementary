@@ -1,3 +1,11 @@
+## v0.4.2 (2025-02-14)
+* Upgraded PHPStan to v2
+* Updated dependencies
+* Tidied boolean logic
+* Fixed Exceptional syntax
+* Added PHP8.4 to CI workflow
+* Made PHP8.4 minimum version
+
 ## v0.4.1 (2025-02-07)
 * Fixed implicit nullable arguments
 * Added @phpstan-require-implements constraints

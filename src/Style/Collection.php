@@ -10,25 +10,25 @@ declare(strict_types=1);
 namespace DecodeLabs\Elementary\Style;
 
 use DecodeLabs\Collections\ArrayProvider;
-use DecodeLabs\Collections\HashMap;
-use DecodeLabs\Collections\Native\HashMapTrait;
+use DecodeLabs\Collections\DictionaryInterface;
+use DecodeLabs\Collections\DictionaryTrait;
 use DecodeLabs\Exceptional;
 use IteratorAggregate;
 
 /**
- * @implements IteratorAggregate<string, string>
- * @implements HashMap<string>
+ * @implements IteratorAggregate<string,string>
+ * @implements DictionaryInterface<string,string>
  */
 class Collection implements
     IteratorAggregate,
-    HashMap
+    DictionaryInterface
 {
     /**
-     * @use HashMapTrait<string>
+     * @use DictionaryTrait<string,string>
      */
-    use HashMapTrait;
+    use DictionaryTrait;
 
-    protected const Mutable = true;
+    protected const bool Mutable = true;
 
     /**
      * Init with styles
@@ -57,9 +57,13 @@ class Collection implements
             } elseif ($data === null) {
                 continue;
             } elseif (!is_array($data)) {
-                throw Exceptional::InvalidArgument('Invalid style data', null, $data);
+                throw Exceptional::InvalidArgument(
+                    message: 'Invalid style data',
+                    data: $data
+                );
             }
 
+            /** @var array<string,string> $data */
             $this->merge($data);
         }
 

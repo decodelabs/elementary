@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace DecodeLabs\Elementary;
 
-use DecodeLabs\Collections\Native\SequenceTrait;
+use DecodeLabs\Collections\SequenceTrait;
 
 /**
  * @phpstan-require-implements Element
@@ -21,7 +21,7 @@ trait ElementTrait
      */
     use SequenceTrait;
 
-    // protected const Mutable = true;
+    // protected const bool Mutable = true;
 
     /**
      * Init with name, content and attributes
@@ -90,14 +90,20 @@ trait ElementTrait
         $output = '';
 
         foreach ($this->items as $value) {
-            if (empty($value) && $value != '0') {
+            if (
+                empty($value) &&
+                $value != '0'
+            ) {
                 continue;
             }
 
             $output .= $this->renderChild($value, $pretty);
         }
 
-        if (empty($output) && $output != '0') {
+        if (
+            empty($output) &&
+            $output != '0'
+        ) {
             return null;
         }
 

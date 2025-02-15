@@ -9,14 +9,14 @@ declare(strict_types=1);
 
 namespace DecodeLabs\Elementary;
 
-use DecodeLabs\Collections\Sequence;
+use DecodeLabs\Collections\SequenceInterface;
 
 /**
- * @extends Sequence<mixed>
+ * @extends SequenceInterface<mixed>
  */
 interface Element extends
     Tag,
-    Sequence
+    SequenceInterface
 {
     /**
      * @return $this

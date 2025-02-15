@@ -26,8 +26,15 @@ class AnalyzeTagTrait implements
     use ClassListContainerTrait;
     use StyleContainerTrait;
 
-    protected const InlineTags = [];
-    protected const BooleanAttributes = [];
+    /**
+     * @var array<string>
+     */
+    protected const array InlineTags = [];
+
+    /**
+     * @var array<string>
+     */
+    protected const array BooleanAttributes = [];
 
 
     /**

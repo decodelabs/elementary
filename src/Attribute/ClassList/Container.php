@@ -12,6 +12,9 @@ namespace DecodeLabs\Elementary\Attribute\ClassList;
 use DecodeLabs\Collections\AttributeContainer;
 use DecodeLabs\Elementary\Attribute\ClassList;
 
+/**
+ * @extends AttributeContainer<string>
+ */
 interface Container extends AttributeContainer
 {
     /**
