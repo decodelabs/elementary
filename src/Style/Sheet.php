@@ -18,14 +18,14 @@ use Throwable;
 use Traversable;
 
 /**
- * @implements IteratorAggregate<string, Collection>
+ * @implements IteratorAggregate<string,Collection>
  */
 class Sheet implements
     IteratorAggregate,
     Dumpable
 {
     /**
-     * @var array<string, Collection>
+     * @var array<string,Collection>
      */
     protected array $blocks = [];
 

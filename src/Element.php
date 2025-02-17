@@ -12,7 +12,10 @@ namespace DecodeLabs\Elementary;
 use DecodeLabs\Collections\SequenceInterface;
 
 /**
+ * @template TAttributeValue
+ * @template TAttributeInput = TAttributeValue
  * @extends SequenceInterface<mixed>
+ * @extends Tag<TAttributeValue,TAttributeInput>
  */
 interface Element extends
     Tag,

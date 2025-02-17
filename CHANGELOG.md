@@ -1,3 +1,6 @@
+## v0.4.3 (2025-02-16)
+* Fixed attribute interface handling
+
 ## v0.4.2 (2025-02-14)
 * Upgraded PHPStan to v2
 * Updated dependencies

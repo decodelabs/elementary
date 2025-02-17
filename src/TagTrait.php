@@ -16,13 +16,14 @@ use DecodeLabs\Elementary\Markup\ChildRendererTrait;
 use DecodeLabs\Exceptional;
 
 /**
- * @implements \ArrayAccess<string, mixed>
+ * @template TAttributeValue
+ * @template TAttributeInput = TAttributeValue
  * @phpstan-require-implements Tag
  */
 trait TagTrait
 {
     /**
-     * @use AttributeContainerTrait<string>
+     * @use AttributeContainerTrait<TAttributeValue,TAttributeInput>
      */
     use AttributeContainerTrait;
     use ChildRendererTrait;
@@ -39,7 +40,7 @@ trait TagTrait
      * Init with name and attributes
      *
      * @param string $name
-     * @param array<string, mixed>|null $attributes
+     * @param array<string,TAttributeInput>|null $attributes
      */
     public function __construct(
         string $name,

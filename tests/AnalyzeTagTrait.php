@@ -17,11 +17,17 @@ use DecodeLabs\Elementary\Style\ContainerTrait as StyleContainerTrait;
 use DecodeLabs\Elementary\Tag;
 use DecodeLabs\Elementary\TagTrait;
 
+/**
+ * @implements Tag<string|float|int|bool|array<mixed>>
+ */
 class AnalyzeTagTrait implements
     Tag,
     ClassListContainer,
     StyleContainer
 {
+    /**
+     * @use TagTrait<string|float|int|bool|array<mixed>>
+     */
     use TagTrait;
     use ClassListContainerTrait;
     use StyleContainerTrait;

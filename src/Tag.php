@@ -13,8 +13,10 @@ use ArrayAccess;
 use DecodeLabs\Collections\AttributeContainer;
 
 /**
+ * @template TAttributeValue
+ * @template TAttributeInput = TAttributeValue
  * @extends ArrayAccess<string,mixed>
- * @extends AttributeContainer<string>
+ * @extends AttributeContainer<TAttributeValue,TAttributeInput>
  */
 interface Tag extends
     Markup,
