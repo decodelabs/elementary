@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace DecodeLabs\Elementary\Attribute;
 
 use Countable;
-
 use DecodeLabs\Glitch\Dumpable;
 
 class ClassList implements
