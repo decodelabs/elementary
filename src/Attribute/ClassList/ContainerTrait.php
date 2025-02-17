@@ -26,9 +26,8 @@ trait ContainerTrait
     public function setClasses(
         mixed ...$classes
     ): static {
-        /** @var array<string> $classes */
-        $classes = ArrayUtils::collapse($classes, false, true, true);
-        $this->getClasses()->clear()->add(...$classes);
+        $this->clearClasses();
+        $this->addClasses(...$classes);
         return $this;
     }
 
@@ -40,8 +39,9 @@ trait ContainerTrait
     public function addClasses(
         mixed ...$classes
     ): static {
-        /** @var array<string> $classes */
         $classes = ArrayUtils::collapse($classes, false, true, true);
+        $classes = array_map(fn ($class) => Coercion::toString($class), $classes);
+
         $this->getClasses()->add(...$classes);
         return $this;
     }

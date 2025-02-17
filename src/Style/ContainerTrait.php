@@ -24,9 +24,8 @@ trait ContainerTrait
     public function setStyles(
         mixed ...$styles
     ): static {
-        $collection = $this->getStyles();
-        $collection->clear();
-        $collection->import(...$styles);
+        $this->clearStyles();
+        $this->addStyles(...$styles);
         return $this;
     }
 

@@ -1,3 +1,6 @@
+## v0.4.4 (2025-02-17)
+* Improved attribute value handling
+
 ## v0.4.3 (2025-02-16)
 * Fixed attribute interface handling
 
