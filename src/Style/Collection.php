@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace DecodeLabs\Elementary\Style;
 
+use DecodeLabs\Coercion;
 use DecodeLabs\Collections\ArrayProvider;
 use DecodeLabs\Collections\DictionaryInterface;
 use DecodeLabs\Collections\DictionaryTrait;
@@ -52,7 +53,10 @@ class Collection implements
                 $data = $this->parse($data);
             } elseif ($data instanceof ArrayProvider) {
                 $data = $data->toArray();
-            } elseif (is_iterable($data) && !is_array($data)) {
+            } elseif (
+                is_iterable($data) &&
+                !is_array($data)
+            ) {
                 $data = iterator_to_array($data);
             } elseif ($data === null) {
                 continue;
@@ -64,6 +68,7 @@ class Collection implements
             }
 
             /** @var array<string,string> $data */
+            $data = array_map(fn($value) => Coercion::toString($value), $data);
             $this->merge($data);
         }
 

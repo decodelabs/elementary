@@ -71,7 +71,7 @@ class Sheet implements
     /**
      * Parse string styles
      *
-     * @return array<string, Collection>
+     * @return array<string,Collection>
      */
     protected function parse(
         string $style
@@ -191,7 +191,7 @@ class Sheet implements
     /**
      * Export for dump inspection
      *
-     * @return iterable<string, mixed>
+     * @return iterable<string,mixed>
      */
     public function glitchDump(): iterable
     {

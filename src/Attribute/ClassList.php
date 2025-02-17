@@ -17,7 +17,7 @@ class ClassList implements
     Dumpable
 {
     /**
-     * @var array<string, bool>
+     * @var array<string,bool>
      */
     protected array $classes = [];
 
@@ -144,7 +144,7 @@ class ClassList implements
     /**
      * Export for dump inspection
      *
-     * @return iterable<string, mixed>
+     * @return iterable<string,mixed>
      */
     public function glitchDump(): iterable
     {
