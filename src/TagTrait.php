@@ -195,7 +195,7 @@ trait TagTrait
      */
     public function getId(): ?string
     {
-        return Coercion::toStringOrNull($this->getAttribute('id'));
+        return Coercion::tryString($this->getAttribute('id'));
     }
 
 
@@ -360,7 +360,7 @@ trait TagTrait
         }
 
         // String
-        return $key . '="' . $this->esc(Coercion::toString($value)) . '"';
+        return $key . '="' . $this->esc(Coercion::asString($value)) . '"';
     }
 
     /**
@@ -413,7 +413,7 @@ trait TagTrait
         mixed $key,
         mixed $value
     ): void {
-        $this->setAttribute(Coercion::toString($key), $value);
+        $this->setAttribute(Coercion::asString($key), $value);
     }
 
     /**
@@ -422,7 +422,7 @@ trait TagTrait
     public function offsetGet(
         mixed $key
     ): mixed {
-        return $this->getAttribute(Coercion::toString($key));
+        return $this->getAttribute(Coercion::asString($key));
     }
 
     /**
@@ -431,7 +431,7 @@ trait TagTrait
     public function offsetExists(
         mixed $key
     ): bool {
-        return $this->hasAttribute(Coercion::toString($key));
+        return $this->hasAttribute(Coercion::asString($key));
     }
 
     /**
@@ -440,7 +440,7 @@ trait TagTrait
     public function offsetUnset(
         mixed $key
     ): void {
-        $this->removeAttribute(Coercion::toString($key));
+        $this->removeAttribute(Coercion::asString($key));
     }
 
 

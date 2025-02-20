@@ -18,14 +18,14 @@ use IteratorAggregate;
 
 /**
  * @implements IteratorAggregate<string,string>
- * @implements DictionaryInterface<string,string>
+ * @implements DictionaryInterface<string>
  */
 class Collection implements
     IteratorAggregate,
     DictionaryInterface
 {
     /**
-     * @use DictionaryTrait<string,string>
+     * @use DictionaryTrait<string>
      */
     use DictionaryTrait;
 
@@ -68,7 +68,7 @@ class Collection implements
             }
 
             /** @var array<string,string> $data */
-            $data = array_map(fn($value) => Coercion::toString($value), $data);
+            $data = array_map(fn($value) => Coercion::asString($value), $data);
             $this->merge($data);
         }
 

@@ -58,7 +58,7 @@ trait ChildRendererTrait
         if ($value instanceof Element) {
             $output = (string)$value->render($pretty);
         } else {
-            $output = Coercion::toStringOrNull($value) ?? '';
+            $output = Coercion::tryString($value) ?? '';
         }
 
         if (!$value instanceof Markup) {

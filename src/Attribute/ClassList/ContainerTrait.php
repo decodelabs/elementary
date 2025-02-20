@@ -40,7 +40,7 @@ trait ContainerTrait
         mixed ...$classes
     ): static {
         $classes = ArrayUtils::collapse($classes, false, true, true);
-        $classes = array_map(fn ($class) => Coercion::toString($class), $classes);
+        $classes = array_map(fn ($class) => Coercion::asString($class), $classes);
 
         $this->getClasses()->add(...$classes);
         return $this;
@@ -57,7 +57,7 @@ trait ContainerTrait
 
         if (!$this->attributes['class'] instanceof ClassList) {
             $this->attributes['class'] = new ClassList(
-                Coercion::toString($this->attributes['class'])
+                Coercion::asString($this->attributes['class'])
             );
         }
 
