@@ -12,6 +12,7 @@ namespace DecodeLabs\Elementary\Markup;
 use DecodeLabs\Coercion;
 use DecodeLabs\Elementary\Buffer;
 use DecodeLabs\Elementary\Element;
+use DecodeLabs\Elementary\Tag;
 use DecodeLabs\Elementary\Markup;
 use Generator;
 
@@ -49,7 +50,7 @@ trait ChildRendererTrait
                 $value instanceof Generator &&
                 null !== ($part = $value->getReturn())
             ) {
-                $output .= $this->renderChild($part);
+                $output .= $this->renderChild($part, $pretty);
             }
 
             return $output;

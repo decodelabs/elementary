@@ -1,3 +1,6 @@
+## v0.4.6 (2025-03-14)
+* Improved pretty rendering
+
 ## v0.4.5 (2025-02-20)
 * Upgraded Coercion dependency
 
