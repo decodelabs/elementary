@@ -232,7 +232,7 @@ trait TagTrait
                 return null;
             }
 
-            $content = $this->renderChild($content);
+            $content = $this->renderChild($content, $pretty);
         } else {
             $content = null;
         }
