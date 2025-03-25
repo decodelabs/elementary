@@ -1,3 +1,6 @@
+## v0.4.9 (2025-03-25)
+* Added Buffer override to Tag interface
+
 ## v0.4.8 (2025-03-25)
 * Fixed renderWith Buffer return type
 

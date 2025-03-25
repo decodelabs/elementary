@@ -15,6 +15,7 @@ use DecodeLabs\Collections\AttributeContainer;
 /**
  * @template TAttributeValue
  * @template TAttributeInput = TAttributeValue
+ * @template TBuffer of Buffer = Buffer
  * @extends ArrayAccess<string,mixed>
  * @extends AttributeContainer<TAttributeValue,TAttributeInput>
  */
@@ -60,6 +61,9 @@ interface Tag extends
 
     public function isClosable(): bool;
 
+    /**
+     * @return ?TBuffer
+     */
     public function renderWith(
         mixed $content = null,
         bool $pretty = false
