@@ -14,11 +14,14 @@ use DecodeLabs\Collections\SequenceInterface;
 /**
  * @template TAttributeValue
  * @template TAttributeInput = TAttributeValue
+ * @template TBuffer of Buffer = Buffer
  * @extends SequenceInterface<mixed>
  * @extends Tag<TAttributeValue,TAttributeInput>
+ * @extends Renderable<TBuffer>
  */
 interface Element extends
     Tag,
+    Renderable,
     SequenceInterface
 {
     /**
@@ -32,10 +35,6 @@ interface Element extends
      * @return $this
      */
     public function normalize(): static;
-
-    public function render(
-        bool $pretty = false
-    ): ?Buffer;
 
     public function renderContent(
         bool $pretty = false

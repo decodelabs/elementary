@@ -1,3 +1,6 @@
+## v0.4.7 (2025-03-25)
+* Added Renderable interface
+
 ## v0.4.6 (2025-03-14)
 * Improved pretty rendering
 
