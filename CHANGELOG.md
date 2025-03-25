@@ -1,3 +1,6 @@
+## v0.4.8 (2025-03-25)
+* Fixed renderWith Buffer return type
+
 ## v0.4.7 (2025-03-25)
 * Added Renderable interface
 

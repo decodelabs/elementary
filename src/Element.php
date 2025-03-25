@@ -36,6 +36,9 @@ interface Element extends
      */
     public function normalize(): static;
 
+    /**
+     * @return ?TBuffer
+     */
     public function renderContent(
         bool $pretty = false
     ): ?Buffer;
