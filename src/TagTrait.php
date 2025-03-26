@@ -225,14 +225,14 @@ trait TagTrait
         bool $pretty = false
     ): ?Buffer {
         if ($this->closable) {
+            $content = $this->renderChild($content, $pretty);
+
             if (
                 !$this->renderEmpty &&
-                $content === null
+                $content === ''
             ) {
                 return null;
             }
-
-            $content = $this->renderChild($content, $pretty);
         } else {
             $content = null;
         }

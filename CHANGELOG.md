@@ -1,3 +1,6 @@
+## v0.4.10 (2025-03-26)
+* Render child before checking renderEmpty
+
 ## v0.4.9 (2025-03-25)
 * Added Buffer override to Tag interface
 
