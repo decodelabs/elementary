@@ -12,6 +12,7 @@ namespace DecodeLabs\Elementary;
 use DecodeLabs\Collections\SequenceTrait;
 
 /**
+ * @template TBuffer of Buffer = Buffer
  * @phpstan-require-implements Element
  */
 trait ElementTrait
@@ -27,7 +28,7 @@ trait ElementTrait
      * Init with name, content and attributes
      */
     public function __construct(
-        string $name,
+        ?string $name,
         mixed $content,
         ?array $attributes = null
     ) {
@@ -67,6 +68,8 @@ trait ElementTrait
 
     /**
      * Render to more readable string (for dump)
+     *
+     * @return ?TBuffer
      */
     public function render(
         bool $pretty = false
@@ -83,6 +86,8 @@ trait ElementTrait
 
     /**
      * Render inner content
+     *
+     * @return ?TBuffer
      */
     public function renderContent(
         bool $pretty = false
@@ -125,7 +130,7 @@ trait ElementTrait
     /**
      * Export for dump inspection
      *
-     * @return iterable<string, mixed>
+     * @return iterable<string,mixed>
      */
     public function glitchDump(): iterable
     {
@@ -138,7 +143,7 @@ trait ElementTrait
             $def = '<?' . substr($def, 1);
         }
 
-        yield 'className' => $this->name;
+        yield 'className' => $this->tagName;
         yield 'definition' => $def;
 
         yield 'properties' => [

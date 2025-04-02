@@ -12,12 +12,13 @@ namespace DecodeLabs\Elementary;
 use DecodeLabs\Coercion;
 use DecodeLabs\Collections\AttributeContainerTrait;
 use DecodeLabs\Elementary\Attribute\ClassList\Container as ClassListContainer;
-use DecodeLabs\Elementary\Markup\ChildRendererTrait;
+use DecodeLabs\Elementary\ChildRendererTrait;
 use DecodeLabs\Exceptional;
 
 /**
  * @template TAttributeValue
  * @template TAttributeInput = TAttributeValue
+ * @template TBuffer of Buffer = Buffer
  * @phpstan-require-implements Tag
  */
 trait TagTrait
@@ -26,27 +27,144 @@ trait TagTrait
      * @use AttributeContainerTrait<TAttributeValue,TAttributeInput>
      */
     use AttributeContainerTrait;
+
+    /**
+     * @use ChildRendererTrait<TBuffer>
+     */
     use ChildRendererTrait;
 
     // protected const InlineTags = [];
     // protected const BooleanAttributes = [];
 
-    protected string $name;
-    protected bool $closable = true;
-    protected bool $renderEmpty = true;
+    public ?string $tagName {
+        get => $this->tagName;
+        set(?string $name) {
+            if($name === null) {
+                $this->tagName = null;
+                $this->selfClosing = false;
+                return;
+            }
+
+            $origName = $name;
+
+            if (false !== strpos($name, '[')) {
+                $name = preg_replace_callback('/\[([^\]]*)\]/', function ($res) {
+                    $parts = explode('=', $res[1], 2);
+
+                    if (empty($key = array_shift($parts))) {
+                        throw Exceptional::UnexpectedValue(
+                            message: 'Invalid tag attribute definition',
+                            data: $res
+                        );
+                    }
+
+                    $value = (string)array_shift($parts);
+                    $first = substr($value, 0, 1);
+                    $last = substr($value, -1);
+
+                    if (
+                        strlen($value) > 1 &&
+                        (
+                            (
+                                $first == '"' &&
+                                $last == '"'
+                            ) ||
+                            (
+                                $first == "'" &&
+                                $last == "'"
+                            )
+                        )
+                    ) {
+                        $value = substr($value, 1, -1);
+                    }
+
+                    if ($value === '') {
+                        $value = true;
+                    }
+
+                    $this->setAttribute($key, $value);
+                    return '';
+                }, $name) ?? $name;
+            }
+
+            if (false !== strpos($name, '#')) {
+                $name = preg_replace_callback('/\#([^ .\[\]]+)/', function ($res) {
+                    $this->setAttribute('id', $res[1]);
+                    return '';
+                }, $name) ?? $name;
+            }
+
+            $parts = explode('.', $name);
+
+            if (empty($name = array_shift($parts))) {
+                throw Exceptional::UnexpectedValue(
+                    message: 'Unable to parse tag class definition',
+                    data: $origName
+                );
+            }
+
+            $this->tagName = $name;
+
+            if($this->tagName === null) {
+                return;
+            }
+
+            if (false !== strpos($this->tagName, '?')) {
+                $this->tagName = str_replace('?', '', $this->tagName);
+                $this->renderEmpty = false;
+            }
+
+            if (substr($this->tagName, 0, 1) === '/') {
+                $this->selfClosing = true;
+                $this->tagName = substr($this->tagName, 1);
+            } else {
+                $this->selfClosing = $this->isSelfClosingTagName($this->tagName);
+            }
+
+            if (!empty($parts)) {
+                if ($this instanceof ClassListContainer) {
+                    $this->addClasses(...$parts);
+                } else {
+                    $this->setAttribute('class', implode(' ', $parts));
+                }
+            }
+        }
+    }
+
+    public ?string $id {
+        get {
+            return Coercion::tryString($this->getAttribute('id'));
+        }
+        set(?string $id) {
+            if ($id === null) {
+                $this->removeAttribute('id');
+                return;
+            }
+
+            if (preg_match('/\s/', $id)) {
+                throw Exceptional::InvalidArgument(
+                    message: 'Invalid tag id: ' . $id
+                );
+            }
+
+            $this->setAttribute('id', $id);
+        }
+    }
+
+    public bool $selfClosing = false;
+    public bool $renderEmpty = true;
 
 
     /**
      * Init with name and attributes
      *
-     * @param string $name
      * @param array<string,TAttributeInput>|null $attributes
      */
     public function __construct(
-        string $name,
+        ?string $tagName,
         ?array $attributes = null
     ) {
-        $this->setName($name);
+        $this->tagName = $tagName;
 
         if ($attributes !== null) {
             foreach ($attributes as $key => $value) {
@@ -61,108 +179,10 @@ trait TagTrait
         }
     }
 
-
     /**
-     * Parse css style selector into tag name, classes, etc
+     * Is tag name a self closing <tag /> type?
      */
-    public function setName(
-        string $name
-    ): static {
-        $origName = $name;
-
-        if (false !== strpos($name, '[')) {
-            $name = preg_replace_callback('/\[([^\]]*)\]/', function ($res) {
-                $parts = explode('=', $res[1], 2);
-
-                if (empty($key = array_shift($parts))) {
-                    throw Exceptional::UnexpectedValue(
-                        message: 'Invalid tag attribute definition',
-                        data: $res
-                    );
-                }
-
-                $value = (string)array_shift($parts);
-                $first = substr($value, 0, 1);
-                $last = substr($value, -1);
-
-                if (
-                    strlen($value) > 1 &&
-                    (
-                        (
-                            $first == '"' &&
-                            $last == '"'
-                        ) ||
-                        (
-                            $first == "'" &&
-                            $last == "'"
-                        )
-                    )
-                ) {
-                    $value = substr($value, 1, -1);
-                }
-
-                if ($value === '') {
-                    $value = true;
-                }
-
-                $this->setAttribute($key, $value);
-                return '';
-            }, $name) ?? $name;
-        }
-
-        if (false !== strpos($name, '#')) {
-            $name = preg_replace_callback('/\#([^ .\[\]]+)/', function ($res) {
-                $this->setId($res[1]);
-                return '';
-            }, $name) ?? $name;
-        }
-
-        $parts = explode('.', $name);
-
-        if (empty($name = array_shift($parts))) {
-            throw Exceptional::UnexpectedValue(
-                message: 'Unable to parse tag class definition',
-                data: $origName
-            );
-        }
-
-        $this->name = $name;
-
-        if (false !== strpos($this->name, '?')) {
-            $this->name = str_replace('?', '', $this->name);
-            $this->renderEmpty = false;
-        }
-
-        if (substr($this->name, 0, 1) === '/') {
-            $this->closable = false;
-            $this->name = substr($this->name, 1);
-        } else {
-            $this->closable = $this->isClosableTagName($this->name);
-        }
-
-        if (!empty($parts)) {
-            if ($this instanceof ClassListContainer) {
-                $this->addClasses(...$parts);
-            } else {
-                $this->setAttribute('class', implode(' ', $parts));
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get tag name
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    /**
-     * Is tag name a closable <tag /> type?
-     */
-    public static function isClosableTagName(
+    public static function isSelfClosingTagName(
         string $name
     ): bool {
         return false;
@@ -170,42 +190,15 @@ trait TagTrait
 
 
     /**
-     * Direct set id attribute
-     */
-    public function setId(
-        ?string $id
-    ): static {
-        if ($id === null) {
-            $this->removeAttribute('id');
-            return $this;
-        }
-
-        if (preg_match('/\s/', $id)) {
-            throw Exceptional::InvalidArgument(
-                message: 'Invalid tag id: ' . $id
-            );
-        }
-
-        $this->setAttribute('id', $id);
-        return $this;
-    }
-
-    /**
-     * Get id attribute value
-     */
-    public function getId(): ?string
-    {
-        return Coercion::tryString($this->getAttribute('id'));
-    }
-
-
-
-    /**
      * Is this element inline?
      */
     public function isInline(): bool
     {
-        return in_array(strtolower($this->name), self::InlineTags);
+        if($this->tagName === null) {
+            return false;
+        }
+
+        return in_array(strtolower($this->tagName), self::InlineTags);
     }
 
     /**
@@ -219,12 +212,14 @@ trait TagTrait
 
     /**
      * Render tag with inner content
+     *
+     * @return ?TBuffer
      */
     public function renderWith(
         mixed $content = null,
         bool $pretty = false
     ): ?Buffer {
-        if ($this->closable) {
+        if (!$this->selfClosing) {
             $content = $this->renderChild($content, $pretty);
 
             if (
@@ -237,24 +232,28 @@ trait TagTrait
             $content = null;
         }
 
-        $isBlock = $this->isBlock();
+        if($this->tagName === null) {
+            $output = $content;
+        } else {
+            $isBlock = $this->isBlock();
 
-        if (
-            $pretty &&
-            $content !== null &&
-            $isBlock &&
-            false !== strpos($content, '<')
-        ) {
-            $content = "\n  " . str_replace(">\n", ">\n  ", rtrim($content, "\n")) . "\n";
-        }
+            if (
+                $pretty &&
+                $content !== null &&
+                $isBlock &&
+                false !== strpos($content, '<')
+            ) {
+                $content = "\n  " . str_replace(">\n", ">\n  ", rtrim($content, "\n")) . "\n";
+            }
 
-        $output = $this->open() . $content . $this->close();
+            $output = $this->open() . $content . $this->close();
 
-        if (
-            $pretty &&
-            $isBlock
-        ) {
-            $output .= "\n";
+            if (
+                $pretty &&
+                $isBlock
+            ) {
+                $output .= "\n";
+            }
         }
 
         return $this->newBuffer($output);
@@ -263,30 +262,13 @@ trait TagTrait
 
     /**
      * Create new local buffer
+     *
+     * @return TBuffer
      */
     abstract protected function newBuffer(
         ?string $content
     ): Buffer;
 
-
-
-    /**
-     * Set whether to render tag if no content
-     */
-    public function setRenderEmpty(
-        bool $render
-    ): static {
-        $this->renderEmpty = $render;
-        return $this;
-    }
-
-    /**
-     * Render tag if no content?
-     */
-    public function willRenderEmpty(): bool
-    {
-        return $this->renderEmpty;
-    }
 
 
     /**
@@ -306,9 +288,9 @@ trait TagTrait
             $attributes = ' ' . $attributes;
         }
 
-        $output = '<' . $this->name . $attributes;
+        $output = '<' . $this->tagName . $attributes;
 
-        if (!$this->closable) {
+        if ($this->selfClosing) {
             $output .= ' /';
         }
 
@@ -368,31 +350,12 @@ trait TagTrait
      */
     public function close(): string
     {
-        if (!$this->closable) {
+        if ($this->selfClosing) {
             return '';
         }
 
-        return '</' . $this->name . '>';
+        return '</' . $this->tagName . '>';
     }
-
-    /**
-     * Manually override whether tag has closing tag, or is single inline tag
-     */
-    public function setClosable(
-        bool $closable
-    ): static {
-        $this->closable = $closable;
-        return $this;
-    }
-
-    /**
-     * Is this tag closable?
-     */
-    public function isClosable(): bool
-    {
-        return $this->closable;
-    }
-
 
 
     /**
@@ -468,7 +431,7 @@ trait TagTrait
             $output = '<?' . substr($output, 1);
         }
 
-        yield 'className' => $this->name;
+        yield 'className' => $this->tagName;
         yield 'definition' => $output;
 
         yield 'properties' => [

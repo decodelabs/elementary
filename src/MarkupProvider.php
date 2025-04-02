@@ -7,11 +7,11 @@
 
 declare(strict_types=1);
 
-namespace DecodeLabs\Elementary\Markup;
+namespace DecodeLabs\Elementary;
 
 use DecodeLabs\Elementary\Markup;
 
-interface Proxy
+interface MarkupProvider
 {
     public function toMarkup(): Markup;
 }

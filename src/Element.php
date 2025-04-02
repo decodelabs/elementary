@@ -16,7 +16,7 @@ use DecodeLabs\Collections\SequenceInterface;
  * @template TAttributeInput = TAttributeValue
  * @template TBuffer of Buffer = Buffer
  * @extends SequenceInterface<mixed>
- * @extends Tag<TAttributeValue,TAttributeInput>
+ * @extends Tag<TAttributeValue,TAttributeInput,TBuffer>
  * @extends Renderable<TBuffer>
  */
 interface Element extends

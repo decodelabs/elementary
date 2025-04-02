@@ -1,3 +1,13 @@
+* Allow null tag name
+* Restructured classes
+* Renamed Markup Proxy to MarkupProvider
+* Added TBuffer template to ChildRendererTrait
+* Improved TBuffer handling
+* Renamed closable to selfClosing
+* Simplified selfClosing handling
+* Converted tag hidden members to properties
+* Replaced getters and setters with properties
+
 ## v0.4.10 (2025-03-26)
 * Render child before checking renderEmpty
 

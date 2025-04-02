@@ -16,6 +16,10 @@ use Stringable;
  */
 trait ContainerTrait
 {
+    public Collection $style {
+        get => $this->getStyles();
+    }
+
     /**
      * Replace style list
      *

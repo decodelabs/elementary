@@ -14,6 +14,8 @@ use DecodeLabs\Elementary\Attribute\ClassList;
 
 interface Container
 {
+    public ClassList $classList { get; }
+
     /**
      * @return $this
      */

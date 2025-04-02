@@ -13,6 +13,8 @@ use Stringable;
 
 interface Container
 {
+    public Collection $style { get; }
+
     /**
      * @return $this
      */
