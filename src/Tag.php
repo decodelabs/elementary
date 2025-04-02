@@ -24,27 +24,14 @@ interface Tag extends
     AttributeContainer,
     ArrayAccess
 {
-    /**
-     * @return $this
-     */
-    public function setName(
-        string $name
-    ): static;
+    public ?string $tagName { get; set; }
+    public ?string $id { get; set; }
+    public bool $selfClosing { get; set; }
+    public bool $renderEmpty { get; set; }
 
-    public function getName(): string;
-
-    public static function isClosableTagName(
+    public static function isSelfClosingTagName(
         string $name
     ): bool;
-
-    /**
-     * @return $this
-     */
-    public function setId(
-        ?string $id
-    ): static;
-
-    public function getId(): ?string;
 
     public function isInline(): bool;
     public function isBlock(): bool;
@@ -53,28 +40,10 @@ interface Tag extends
     public function close(): string;
 
     /**
-     * @return $this
-     */
-    public function setClosable(
-        bool $closable
-    ): static;
-
-    public function isClosable(): bool;
-
-    /**
      * @return ?TBuffer
      */
     public function renderWith(
         mixed $content = null,
         bool $pretty = false
     ): ?Buffer;
-
-    /**
-     * @return $this
-     */
-    public function setRenderEmpty(
-        bool $render
-    ): static;
-
-    public function willRenderEmpty(): bool;
 }

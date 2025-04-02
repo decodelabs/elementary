@@ -18,6 +18,10 @@ use DecodeLabs\Elementary\Attribute\ClassList;
  */
 trait ContainerTrait
 {
+    public ClassList $classList {
+        get => $this->getClasses();
+    }
+
     /**
      * Replace class list
      *

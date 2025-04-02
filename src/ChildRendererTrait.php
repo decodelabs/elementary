@@ -7,14 +7,14 @@
 
 declare(strict_types=1);
 
-namespace DecodeLabs\Elementary\Markup;
+namespace DecodeLabs\Elementary;
 
 use DecodeLabs\Coercion;
-use DecodeLabs\Elementary\Buffer;
-use DecodeLabs\Elementary\Element;
-use DecodeLabs\Elementary\Markup;
 use Generator;
 
+/**
+ * @template TBuffer of Buffer
+ */
 trait ChildRendererTrait
 {
     /**
@@ -33,7 +33,7 @@ trait ChildRendererTrait
 
         $output = '';
 
-        if ($value instanceof Proxy) {
+        if ($value instanceof MarkupProvider) {
             $value = $value->toMarkup();
         }
 
@@ -85,7 +85,7 @@ trait ChildRendererTrait
             return;
         }
 
-        if ($value instanceof Proxy) {
+        if ($value instanceof MarkupProvider) {
             $value = $value->toMarkup();
         }
 
@@ -110,9 +110,13 @@ trait ChildRendererTrait
         yield $value;
     }
 
+    /**
+     * @return TBuffer
+     */
     abstract protected function newBuffer(
         ?string $value
     ): Buffer;
+
     /**
      * Escape HTML
      */
