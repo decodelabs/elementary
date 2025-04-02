@@ -1,3 +1,4 @@
+## v0.5.0 (2025-04-02)
 * Allow null tag name
 * Restructured classes
 * Renamed Markup Proxy to MarkupProvider
