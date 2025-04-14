@@ -11,8 +11,6 @@
 
 Elementary is a middleware library designed to provide tools for building tag-base manipulation systems.
 
-_Get news and updates on the [DecodeLabs blog](https://blog.decodelabs.com)._
-
 ---
 
 
