@@ -337,7 +337,10 @@ trait TagTrait
         }
 
         // Markup
-        if ($value instanceof Markup) {
+        if (
+            $value instanceof Buffer &&
+            $value->escaped
+        ) {
             return $key . '="' . (string)$value . '"';
         }
 

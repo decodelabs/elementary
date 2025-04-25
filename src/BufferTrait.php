@@ -14,15 +14,18 @@ namespace DecodeLabs\Elementary;
  */
 trait BufferTrait
 {
+    public bool $escaped = false;
     protected string $content = '';
 
     /**
      * Init with content
      */
     public function __construct(
-        ?string $content
+        ?string $content,
+        bool $escaped = false
     ) {
         $this->content = (string)$content;
+        $this->escaped = $escaped;
     }
 
     /**
