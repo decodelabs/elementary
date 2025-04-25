@@ -1,3 +1,7 @@
+## v0.6.0 (2025-04-25)
+* Added escaped flag to Buffer interface
+* Only render escaped Buffers as raw attributes
+
 ## v0.5.1 (2025-04-02)
 * Upgraded Collections dependency
 

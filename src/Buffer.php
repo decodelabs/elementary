@@ -11,8 +11,11 @@ namespace DecodeLabs\Elementary;
 
 interface Buffer extends Markup
 {
+    public bool $escaped { get; set; }
+
     public function __construct(
-        ?string $content
+        ?string $content,
+        bool $escaped = false
     );
 
     /**
