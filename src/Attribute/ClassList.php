@@ -10,7 +10,8 @@ declare(strict_types=1);
 namespace DecodeLabs\Elementary\Attribute;
 
 use Countable;
-use DecodeLabs\Glitch\Dumpable;
+use DecodeLabs\Nuance\Dumpable;
+use DecodeLabs\Nuance\Entity\NativeObject as NuanceEntity;
 
 class ClassList implements
     Countable,
@@ -141,13 +142,11 @@ class ClassList implements
         return implode(' ', array_keys($this->classes));
     }
 
-    /**
-     * Export for dump inspection
-     *
-     * @return iterable<string,mixed>
-     */
-    public function glitchDump(): iterable
+
+    public function toNuanceEntity(): NuanceEntity
     {
-        yield 'text' => $this->__toString();
+        $entity = new NuanceEntity($this);
+        $entity->text = $this->__toString();
+        return $entity;
     }
 }

@@ -14,6 +14,7 @@ use DecodeLabs\Collections\AttributeContainerTrait;
 use DecodeLabs\Elementary\Attribute\ClassList\Container as ClassListContainer;
 use DecodeLabs\Elementary\ChildRendererTrait;
 use DecodeLabs\Exceptional;
+use DecodeLabs\Nuance\Entity\NativeObject as NuanceEntity;
 
 /**
  * @template TAttributeValue
@@ -420,28 +421,21 @@ trait TagTrait
     }
 
 
-
-    /**
-     * Export for dump inspection
-     *
-     * @return iterable<string, mixed>
-     */
-    public function glitchDump(): iterable
+    public function toNuanceEntity(): NuanceEntity
     {
+        $entity = new NuanceEntity($this);
         $output = $this->__toString();
 
         if (!$this->renderEmpty) {
             $output = '<?' . substr($output, 1);
         }
 
-        yield 'className' => $this->tagName;
-        yield 'definition' => $output;
+        $entity->itemName = $this->tagName;
+        $entity->definition = $output;
 
-        yield 'properties' => [
-            '*renderEmpty' => $this->renderEmpty,
-            '*attributes' => $this->attributes,
-        ];
+        $entity->setProperty('renderEmpty', $this->renderEmpty);
+        $entity->setProperty('attributes', $this->attributes);
 
-        yield 'section:properties' => false;
+        return $entity;
     }
 }

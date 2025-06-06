@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace DecodeLabs\Elementary;
 
 use DecodeLabs\Collections\SequenceTrait;
+use DecodeLabs\Nuance\Entity\NativeObject as NuanceEntity;
 
 /**
  * @template TBuffer of Buffer = Buffer
@@ -127,13 +128,10 @@ trait ElementTrait
     }
 
 
-    /**
-     * Export for dump inspection
-     *
-     * @return iterable<string,mixed>
-     */
-    public function glitchDump(): iterable
+    public function toNuanceEntity(): NuanceEntity
     {
+        $entity = new NuanceEntity($this);
+
         $renderEmpty = $this->renderEmpty;
         $this->renderEmpty = true;
         $def = (string)$this->render(true);
@@ -143,19 +141,13 @@ trait ElementTrait
             $def = '<?' . substr($def, 1);
         }
 
-        yield 'className' => $this->tagName;
-        yield 'definition' => $def;
+        $entity->itemName = $this->tagName;
+        $entity->definition = $def;
 
-        yield 'properties' => [
-            '*renderEmpty' => $this->renderEmpty,
-            '*attributes' => $this->attributes,
-        ];
+        $entity->setProperty('renderEmpty', $this->renderEmpty);
+        $entity->setProperty('attributes', $this->attributes);
 
-        yield 'values' => $this->items;
-
-        yield 'sections' => [
-            'properties' => false,
-            'values' => false
-        ];
+        $entity->values = $this->items;
+        return $entity;
     }
 }

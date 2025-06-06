@@ -12,7 +12,8 @@ namespace DecodeLabs\Elementary\Style;
 use ArrayIterator;
 use DecodeLabs\Collections\ArrayProvider;
 use DecodeLabs\Exceptional;
-use DecodeLabs\Glitch\Dumpable;
+use DecodeLabs\Nuance\Dumpable;
+use DecodeLabs\Nuance\Entity\NativeObject as NuanceEntity;
 use IteratorAggregate;
 use Throwable;
 use Traversable;
@@ -188,15 +189,11 @@ class Sheet implements
         return new ArrayIterator($this->blocks);
     }
 
-    /**
-     * Export for dump inspection
-     *
-     * @return iterable<string,mixed>
-     */
-    public function glitchDump(): iterable
+    public function toNuanceEntity(): NuanceEntity
     {
-        yield 'definition' => $this->render();
-        yield 'section:definition' => false;
-        yield 'values' => $this->blocks;
+        $entity = new NuanceEntity($this);
+        $entity->definition = $this->render();
+        $entity->values = $this->blocks;
+        return $entity;
     }
 }

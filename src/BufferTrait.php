@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace DecodeLabs\Elementary;
 
+use DecodeLabs\Nuance\Entity\NativeObject as NuanceEntity;
+
 /**
  * @phpstan-require-implements Buffer
  */
@@ -83,13 +85,10 @@ trait BufferTrait
     }
 
 
-    /**
-     * Export for dump inspection
-     *
-     * @return iterable<string,mixed>
-     */
-    public function glitchDump(): iterable
+    public function toNuanceEntity(): NuanceEntity
     {
-        yield 'definition' => $this->content;
+        $entity = new NuanceEntity($this);
+        $entity->definition = $this->content;
+        return $entity;
     }
 }
