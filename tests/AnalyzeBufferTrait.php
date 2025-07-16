@@ -15,4 +15,4 @@ use DecodeLabs\Elementary\BufferTrait;
 class AnalyzeBufferTrait implements Buffer
 {
     use BufferTrait;
-};
+}

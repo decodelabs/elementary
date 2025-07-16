@@ -68,7 +68,7 @@ class Collection implements
             }
 
             /** @var array<string,string> $data */
-            $data = array_map(fn($value) => Coercion::asString($value), $data);
+            $data = array_map(fn ($value) => Coercion::asString($value), $data);
             $this->merge($data);
         }
 

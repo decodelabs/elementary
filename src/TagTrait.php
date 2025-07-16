@@ -12,7 +12,6 @@ namespace DecodeLabs\Elementary;
 use DecodeLabs\Coercion;
 use DecodeLabs\Collections\AttributeContainerTrait;
 use DecodeLabs\Elementary\Attribute\ClassList\Container as ClassListContainer;
-use DecodeLabs\Elementary\ChildRendererTrait;
 use DecodeLabs\Exceptional;
 use DecodeLabs\Nuance\Entity\NativeObject as NuanceEntity;
 
@@ -40,7 +39,7 @@ trait TagTrait
     public ?string $tagName {
         get => $this->tagName;
         set(?string $name) {
-            if($name === null) {
+            if ($name === null) {
                 $this->tagName = null;
                 $this->selfClosing = false;
                 return;
@@ -106,7 +105,7 @@ trait TagTrait
 
             $this->tagName = $name;
 
-            if($this->tagName === null) {
+            if ($this->tagName === null) {
                 return;
             }
 
@@ -195,7 +194,7 @@ trait TagTrait
      */
     public function isInline(): bool
     {
-        if($this->tagName === null) {
+        if ($this->tagName === null) {
             return false;
         }
 
@@ -233,7 +232,7 @@ trait TagTrait
             $content = null;
         }
 
-        if($this->tagName === null) {
+        if ($this->tagName === null) {
             $output = $content;
         } else {
             $isBlock = $this->isBlock();

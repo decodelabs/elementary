@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace DecodeLabs\Elementary\Attribute\ClassList;
 
-use DecodeLabs\Collections\AttributeContainer;
 use DecodeLabs\Elementary\Attribute\ClassList;
 
 interface Container
