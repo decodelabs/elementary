@@ -30,18 +30,12 @@ class Sheet implements
      */
     protected array $blocks = [];
 
-    /**
-     * Init with styles
-     */
     public function __construct(
         mixed ...$input
     ) {
         $this->import(...$input);
     }
 
-    /**
-     * Import style data
-     */
     public function import(
         mixed ...$input
     ): static {
@@ -70,8 +64,6 @@ class Sheet implements
     }
 
     /**
-     * Parse string styles
-     *
      * @return array<string,Collection>
      */
     protected function parse(
@@ -96,9 +88,6 @@ class Sheet implements
         return $output;
     }
 
-    /**
-     * Direct set a value
-     */
     public function set(
         string $key,
         mixed $value
@@ -111,27 +100,18 @@ class Sheet implements
         return $this;
     }
 
-    /**
-     * Get a style list
-     */
     public function get(
         string $key
     ): ?Collection {
         return $this->blocks[$key] ?? null;
     }
 
-    /**
-     * Has style list set?
-     */
     public function has(
         string $key
     ): bool {
         return isset($this->blocks[$key]);
     }
 
-    /**
-     * Remove style list
-     */
     public function remove(
         string $key
     ): static {
@@ -139,9 +119,6 @@ class Sheet implements
         return $this;
     }
 
-    /**
-     * Render to string
-     */
     public function render(): ?string
     {
         if (null === ($styles = $this->renderBlocks())) {
@@ -151,9 +128,6 @@ class Sheet implements
         return '<style type="text/css">' . "\n    " . $styles . "\n" . '</style>';
     }
 
-    /**
-     * Render styles blocks
-     */
     public function renderBlocks(): ?string
     {
         if (empty($this->blocks)) {
@@ -169,9 +143,6 @@ class Sheet implements
         return implode("\n" . '    ', $output);
     }
 
-    /**
-     * Convert to string
-     */
     public function __toString(): string
     {
         try {
@@ -181,9 +152,6 @@ class Sheet implements
         }
     }
 
-    /**
-     * Get iterator
-     */
     public function getIterator(): Traversable
     {
         return new ArrayIterator($this->blocks);

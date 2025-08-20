@@ -22,9 +22,6 @@ class ClassList implements
      */
     protected array $classes = [];
 
-    /**
-     * Init with list
-     */
     public function __construct(
         string ...$classes
     ) {
@@ -32,8 +29,6 @@ class ClassList implements
     }
 
     /**
-     * Add class list
-     *
      * @return $this
      */
     public function add(
@@ -56,9 +51,6 @@ class ClassList implements
         return $this;
     }
 
-    /**
-     * Has class(es) in list
-     */
     public function has(
         string ...$classes
     ): bool {
@@ -71,9 +63,6 @@ class ClassList implements
         return false;
     }
 
-    /**
-     * Has all classes in list
-     */
     public function hasAll(
         string ...$classes
     ): bool {
@@ -87,8 +76,6 @@ class ClassList implements
     }
 
     /**
-     * Remove all classes in list
-     *
      * @return $this
      */
     public function remove(
@@ -106,8 +93,6 @@ class ClassList implements
     }
 
     /**
-     * Clear class list
-     *
      * @return $this
      */
     public function clear(): static
@@ -116,17 +101,12 @@ class ClassList implements
         return $this;
     }
 
-    /**
-     * How many classes in list?
-     */
     public function count(): int
     {
         return count($this->classes);
     }
 
     /**
-     * Export to array
-     *
      * @return array<string>
      */
     public function toArray(): array
@@ -134,9 +114,6 @@ class ClassList implements
         return array_keys($this->classes);
     }
 
-    /**
-     * Render to string
-     */
     public function __toString(): string
     {
         return implode(' ', array_keys($this->classes));

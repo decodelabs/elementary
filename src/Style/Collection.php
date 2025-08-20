@@ -31,9 +31,6 @@ class Collection implements
 
     protected const bool Mutable = true;
 
-    /**
-     * Init with styles
-     */
     public function __construct(
         mixed ...$input
     ) {
@@ -41,8 +38,6 @@ class Collection implements
     }
 
     /**
-     * Import style data
-     *
      * @return $this
      */
     public function import(
@@ -76,9 +71,7 @@ class Collection implements
     }
 
     /**
-     * Parse string styles
-     *
-     * @return array<string, string>
+     * @return array<string,string>
      */
     protected function parse(
         string $style
@@ -104,9 +97,7 @@ class Collection implements
     }
 
     /**
-     * Export list of styles that have been set
-     *
-     * @return array<string, string>
+     * @return array<string,string>
      */
     public function export(
         string ...$keys
@@ -124,9 +115,6 @@ class Collection implements
         return $output;
     }
 
-    /**
-     * Render to string
-     */
     public function __toString(): string
     {
         $output = [];

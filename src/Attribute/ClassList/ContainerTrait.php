@@ -23,8 +23,6 @@ trait ContainerTrait
     }
 
     /**
-     * Replace class list
-     *
      * @return $this
      */
     public function setClasses(
@@ -36,8 +34,6 @@ trait ContainerTrait
     }
 
     /**
-     * Add class set to list
-     *
      * @return $this
      */
     public function addClasses(
@@ -50,9 +46,6 @@ trait ContainerTrait
         return $this;
     }
 
-    /**
-     * Get class list from attribute set
-     */
     public function getClasses(): ClassList
     {
         if (!isset($this->attributes['class'])) {
@@ -69,8 +62,6 @@ trait ContainerTrait
     }
 
     /**
-     * Add class set to list
-     *
      * @return $this
      */
     public function setClass(
@@ -81,8 +72,6 @@ trait ContainerTrait
     }
 
     /**
-     * Get class list from attribute set
-     *
      * @return $this
      */
     public function addClass(
@@ -93,8 +82,6 @@ trait ContainerTrait
     }
 
     /**
-     * Remove set of classes from list
-     *
      * @return $this
      */
     public function removeClass(
@@ -104,18 +91,12 @@ trait ContainerTrait
         return $this;
     }
 
-    /**
-     * Does class list have any of these?
-     */
     public function hasClass(
         string ...$classes
     ): bool {
         return $this->getClasses()->has(...$classes);
     }
 
-    /**
-     * Does class list have ALL of these?
-     */
     public function hasClasses(
         string ...$classes
     ): bool {
@@ -123,8 +104,6 @@ trait ContainerTrait
     }
 
     /**
-     * Reset class list
-     *
      * @return $this
      */
     public function clearClasses(): static
@@ -133,9 +112,6 @@ trait ContainerTrait
         return $this;
     }
 
-    /**
-     * How many classes do we have?
-     */
     public function countClasses(): int
     {
         return $this->getClasses()->count();

@@ -25,9 +25,6 @@ trait ElementTrait
 
     // protected const bool Mutable = true;
 
-    /**
-     * Init with name, content and attributes
-     */
     public function __construct(
         ?string $name,
         mixed $content,
@@ -47,8 +44,6 @@ trait ElementTrait
 
 
     /**
-     * Normalize body content to individual items
-     *
      * @return $this
      */
     public function normalize(): static
@@ -68,8 +63,6 @@ trait ElementTrait
 
 
     /**
-     * Render to more readable string (for dump)
-     *
      * @return ?TBuffer
      */
     public function render(
@@ -86,8 +79,6 @@ trait ElementTrait
     }
 
     /**
-     * Render inner content
-     *
      * @return ?TBuffer
      */
     public function renderContent(
@@ -116,9 +107,6 @@ trait ElementTrait
         return $this->newBuffer($output);
     }
 
-    /**
-     * Replace all content with new body
-     */
     public function setBody(
         mixed $body
     ): static {

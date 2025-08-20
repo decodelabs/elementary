@@ -19,9 +19,6 @@ trait BufferTrait
     public bool $escaped = false;
     protected string $content = '';
 
-    /**
-     * Init with content
-     */
     public function __construct(
         ?string $content,
         bool $escaped = false
@@ -30,17 +27,11 @@ trait BufferTrait
         $this->escaped = $escaped;
     }
 
-    /**
-     * Render content to string
-     */
     public function __toString(): string
     {
         return $this->content;
     }
 
-    /**
-     * Add content to start
-     */
     public function prepend(
         ?string $content
     ): static {
@@ -48,9 +39,6 @@ trait BufferTrait
         return $this;
     }
 
-    /**
-     * Add content to end
-     */
     public function append(
         ?string $content
     ): static {
@@ -58,9 +46,6 @@ trait BufferTrait
         return $this;
     }
 
-    /**
-     * Replace content
-     */
     public function replace(
         ?string $content
     ): static {
@@ -68,17 +53,11 @@ trait BufferTrait
         return $this;
     }
 
-    /**
-     * Is there any content here?
-     */
     public function isEmpty(): bool
     {
         return $this->content === '';
     }
 
-    /**
-     * Serialize to json
-     */
     public function jsonSerialize(): mixed
     {
         return (string)$this;

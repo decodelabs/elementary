@@ -156,8 +156,6 @@ trait TagTrait
 
 
     /**
-     * Init with name and attributes
-     *
      * @param array<string,TAttributeInput>|null $attributes
      */
     public function __construct(
@@ -179,9 +177,6 @@ trait TagTrait
         }
     }
 
-    /**
-     * Is tag name a self closing <tag /> type?
-     */
     public static function isSelfClosingTagName(
         string $name
     ): bool {
@@ -189,9 +184,6 @@ trait TagTrait
     }
 
 
-    /**
-     * Is this element inline?
-     */
     public function isInline(): bool
     {
         if ($this->tagName === null) {
@@ -201,9 +193,6 @@ trait TagTrait
         return in_array(strtolower($this->tagName), self::InlineTags);
     }
 
-    /**
-     * Is this a block element?
-     */
     public function isBlock(): bool
     {
         return !$this->isInline();
@@ -211,8 +200,6 @@ trait TagTrait
 
 
     /**
-     * Render tag with inner content
-     *
      * @return ?TBuffer
      */
     public function renderWith(
@@ -261,8 +248,6 @@ trait TagTrait
 
 
     /**
-     * Create new local buffer
-     *
      * @return TBuffer
      */
     abstract protected function newBuffer(
@@ -271,9 +256,6 @@ trait TagTrait
 
 
 
-    /**
-     * Create opening tag string
-     */
     public function open(): string
     {
         $attributes = [];
@@ -348,9 +330,6 @@ trait TagTrait
         return $key . '="' . $this->esc(Coercion::asString($value)) . '"';
     }
 
-    /**
-     * Render closing </tag>
-     */
     public function close(): string
     {
         if ($this->selfClosing) {
@@ -361,9 +340,6 @@ trait TagTrait
     }
 
 
-    /**
-     * Render to string
-     */
     public function __toString(): string
     {
         return $this->open();
@@ -372,9 +348,6 @@ trait TagTrait
 
 
 
-    /**
-     * Shortcut to set attribute
-     */
     public function offsetSet(
         mixed $key,
         mixed $value
@@ -382,27 +355,18 @@ trait TagTrait
         $this->setAttribute(Coercion::asString($key), $value);
     }
 
-    /**
-     * Shortcut to get attribute
-     */
     public function offsetGet(
         mixed $key
     ): mixed {
         return $this->getAttribute(Coercion::asString($key));
     }
 
-    /**
-     * Shortcut to test for attribute
-     */
     public function offsetExists(
         mixed $key
     ): bool {
         return $this->hasAttribute(Coercion::asString($key));
     }
 
-    /**
-     * Shortcut to remove attribute
-     */
     public function offsetUnset(
         mixed $key
     ): void {
@@ -411,9 +375,6 @@ trait TagTrait
 
 
 
-    /**
-     * Serialize to json
-     */
     public function jsonSerialize(): mixed
     {
         return (string)$this;

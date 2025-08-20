@@ -21,8 +21,6 @@ trait ContainerTrait
     }
 
     /**
-     * Replace style list
-     *
      * @return $this
      */
     public function setStyles(
@@ -34,8 +32,6 @@ trait ContainerTrait
     }
 
     /**
-     * Merge style list
-     *
      * @return $this
      */
     public function addStyles(
@@ -45,9 +41,6 @@ trait ContainerTrait
         return $this;
     }
 
-    /**
-     * Get style object
-     */
     public function getStyles(): Collection
     {
         if (!isset($this->attributes['style'])) {
@@ -64,8 +57,6 @@ trait ContainerTrait
     }
 
     /**
-     * Set a single style value
-     *
      * @return $this
      */
     public function setStyle(
@@ -83,9 +74,6 @@ trait ContainerTrait
         return $this;
     }
 
-    /**
-     * Get a single style value
-     */
     public function getStyle(
         string $key
     ): ?string {
@@ -93,8 +81,6 @@ trait ContainerTrait
     }
 
     /**
-     * Remove set of styles
-     *
      * @return $this
      */
     public function removeStyle(
@@ -104,18 +90,12 @@ trait ContainerTrait
         return $this;
     }
 
-    /**
-     * List has any of these styles?
-     */
     public function hasStyle(
         string ...$keys
     ): bool {
         return $this->getStyles()->has(...$keys);
     }
 
-    /**
-     * List has ALL of these styles?
-     */
     public function hasStyles(
         string ...$keys
     ): bool {
@@ -123,8 +103,6 @@ trait ContainerTrait
     }
 
     /**
-     * Reset all styles
-     *
      * @return $this
      */
     public function clearStyles(): static

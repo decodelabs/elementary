@@ -17,9 +17,6 @@ use Generator;
  */
 trait ChildRendererTrait
 {
-    /**
-     * Convert child element to string
-     */
     protected function renderChild(
         mixed $value,
         bool $pretty = false
@@ -69,8 +66,6 @@ trait ChildRendererTrait
     }
 
     /**
-     * Normalize child elements
-     *
      * @return Generator<mixed>
      */
     protected function normalizeChild(
@@ -117,9 +112,6 @@ trait ChildRendererTrait
         ?string $value
     ): Buffer;
 
-    /**
-     * Escape HTML
-     */
     protected function esc(
         ?string $value
     ): ?string {
