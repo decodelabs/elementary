@@ -5,7 +5,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Unreleased
+--
+
+---
+
+### [v0.6.4](https://github.com/decodelabs/elementary/commits/v0.6.4) - 23rd August 2025
+
 - Fixed Closure handling in ChildRendererTrait
+
+[Full list of changes](https://github.com/decodelabs/elementary/compare/v0.6.3...v0.6.4)
 
 ---
 
