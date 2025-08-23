@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace DecodeLabs\Elementary;
 
+use Closure;
 use DecodeLabs\Coercion;
 use Generator;
 
@@ -21,10 +22,7 @@ trait ChildRendererTrait
         mixed $value,
         bool $pretty = false
     ): string {
-        if (
-            is_callable($value) &&
-            is_object($value)
-        ) {
+        if ($value instanceof Closure) {
             return $this->renderChild($value($this), $pretty);
         }
 
