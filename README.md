@@ -16,6 +16,10 @@ Elementary is a middleware library designed to provide tools for building tag-ba
 
 ## Installation
 
+This package requires PHP 8.4 or higher.
+
+Install via Composer:
+
 ```bash
 composer require decodelabs/elementary
 ```
