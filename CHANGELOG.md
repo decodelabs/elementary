@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Unreleased
 - Improved doc comment headers
+- Added AGENTS.md
+- Integrated Chorus dev dependency
 
 ---
 
@@ -330,3 +332,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Ported shared Markup library from Tagged
 - Made base library fully abstract
 - Full max level PHPStan conformance
+
