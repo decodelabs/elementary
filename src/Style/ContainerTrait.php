@@ -44,10 +44,12 @@ trait ContainerTrait
     public function getStyles(): Collection
     {
         if (!isset($this->attributes['style'])) {
+            // @phpstan-ignore-next-line
             $this->attributes['style'] = new Collection();
         }
 
         if (!$this->attributes['style'] instanceof Collection) {
+            // @phpstan-ignore-next-line
             $this->attributes['style'] = new Collection(
                 $this->attributes['style']
             );

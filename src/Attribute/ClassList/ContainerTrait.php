@@ -49,10 +49,12 @@ trait ContainerTrait
     public function getClasses(): ClassList
     {
         if (!isset($this->attributes['class'])) {
+            // @phpstan-ignore-next-line
             $this->attributes['class'] = new ClassList();
         }
 
         if (!$this->attributes['class'] instanceof ClassList) {
+            // @phpstan-ignore-next-line
             $this->attributes['class'] = new ClassList(
                 Coercion::asString($this->attributes['class'])
             );

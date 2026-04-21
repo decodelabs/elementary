@@ -352,6 +352,7 @@ trait TagTrait
         mixed $key,
         mixed $value
     ): void {
+        // @phpstan-ignore-next-line
         $this->setAttribute(Coercion::asString($key), $value);
     }
 
