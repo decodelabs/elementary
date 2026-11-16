@@ -52,7 +52,17 @@ class Collection implements
                 is_iterable($data) &&
                 !is_array($data)
             ) {
-                $data = iterator_to_array($data);
+                $data = iterator_to_array((
+                    /**
+                     * @param iterable<mixed,mixed> $input
+                     * @return \Generator<mixed,mixed>
+                     */
+                    static function (iterable $input): \Generator {
+                        foreach ($input as $key => $item) {
+                            yield $key ?? '' => $item;
+                        }
+                    }
+                )($data));
             } elseif ($data === null) {
                 continue;
             } elseif (!is_array($data)) {
