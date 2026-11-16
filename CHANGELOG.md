@@ -5,10 +5,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Unreleased
+--
+
+---
+
+### [v0.6.6](https://github.com/decodelabs/elementary/commits/v0.6.6) - 16th November 2026
+
 - Preserve empty-string style keys when importing iterables on PHP 8.5
 - Improved doc comment headers
 - Added AGENTS.md
 - Integrated Chorus dev dependency
+
+[Full list of changes](https://github.com/decodelabs/elementary/compare/v0.6.5...v0.6.6)
 
 ---
 
@@ -333,4 +341,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Ported shared Markup library from Tagged
 - Made base library fully abstract
 - Full max level PHPStan conformance
-
